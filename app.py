@@ -10,7 +10,9 @@ def index():
 def ausbildung():  # put application's code here
     return render_template('ausbildung.html')
 
-
+@app.route('/zweiteSeite')
+def zweiteSeite():
+    return render_template('zweiteSeite.html')
 
 # Konstruktorfunktion
 if __name__ == '__main__':
