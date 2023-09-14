@@ -6,7 +6,7 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/ausbildung')
+@app.route('/ausbildung', methods=["POST"])
 def ausbildung():  # put application's code here
     return render_template('ausbildung.html')
 
