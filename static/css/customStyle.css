@@ -1,0 +1,188 @@
+html{
+    height: 100%;
+}
+
+body{
+    background-color: rgba(102, 155, 204, 0.05) !important;
+    font-family: "Lato", sans-serif !important;
+    font-size: 18px;
+    height: 100%;
+}
+
+.labelFont{
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 4%;
+}
+
+.headlineFont{
+    font-weight: bold;
+}
+
+.buttonFont{
+    font-weight: bolder!important;
+    font-size: 20px!important;
+    color: #00377B;
+}
+
+.SpacingSides{
+    padding: inherit;
+}
+
+.containerColor{
+    background-color: white;
+}
+
+.containerFooter{
+    background-color: #00377B;
+    color: #FFFFFF;
+}
+
+.copyright{
+    background-color: #222222;
+}
+
+.SpacingTop{
+    padding-top: 2%;
+}
+
+.blankLink{
+    text-decoration: none!important;
+    color: #FFFFFF;
+}
+
+.controlButton{
+    border-color: #00377B!important;
+    margin-bottom: 30px;
+    color: #00377B!important;
+    background-color: white;
+}
+
+.controlButton:hover{
+    background-color: #00377B!important;
+    color: white!important;
+}
+
+.greyFooter{
+    color: #7e7e7e;
+    border-bottom-style: dotted;
+    font-size: 15px!important;
+}
+
+.table{
+    table-layout:fixed;
+}
+
+.blankLinkButton{
+    color: black;
+}
+
+.jumbotron{
+    margin-bottom:0!important;
+}
+
+.smallButtonDistance{
+    margin-top: 2%;
+}
+
+.invisibleItems{
+    visibility: hidden;
+}
+
+
+.confirmButton{
+    border-color: #00cc00;
+}
+
+.confirmButton:hover{
+    background-color: #00cc00;
+    color: black;
+}
+
+.redHighlight{
+    color: red;
+}
+
+.headlineGlobal{
+    text-decoration: underline;
+}
+
+#copyright{
+    font-size: small;
+    text-align: center;
+    margin-top: 10px;
+}
+
+#copyright a{
+    text-decoration: none;
+    color: #a6a6a6;
+}
+
+.optimizedPicture{
+    background-image: url("/SchulansichtInDenLogofarbenSlideFarbe.png");
+    background-size: cover;
+    height: 100%;
+}
+
+@media only screen and (max-width: 768px) {
+    .hidePictures{
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .hideLogo{
+        display: none;
+    }
+}
+
+.copyrightLine{
+    background-color: #a6a6a6;
+    margin-bottom: 10px;
+}
+
+.labelFontData{
+    font-size: medium;
+}
+
+.containerData{
+    background-color: #00377B;
+    color: white;
+    border-radius: 5px;
+    padding-top: 1%!important;
+    padding-bottom: 1%!important;
+}
+
+.fixSize{
+    transform: scale(1.2)!important;
+}
+
+.dataLink{
+    color: white;
+}
+
+.dataLink:hover{
+    color: #5eb5e0;
+}
+
+.required:after {
+    content: "*";
+    color: red;
+}
+.form-error>ul>li {
+    font-size: .8em;
+    color: red;
+    font-weight: bold;
+}
+
+.form-error>ul {
+    list-style-type: none;
+    padding: 0;
+}
+.datenschutz {
+    margin-right: 5px
+}
+
+.importantInfo{
+    color: red;
+}

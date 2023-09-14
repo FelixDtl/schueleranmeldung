@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <!-- Bootstrap 5-Dateien einbinden -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+
+    <title>Ausbildung - BS1 Schulanmeldung</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/customStyle.css') }}" type="text/css">
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/css/bootstrap-datepicker.min.css"
+          integrity="sha256-JDBcnYeV19J14isGd3EtnsCQK05d8PczJ5+fvEvBJvI=" crossorigin="anonymous"/>
+
+    <!-- <style>
+         body {
+             font-family: Arial, sans-serif;
+         }
+     h1 {
+         text-align: center;
+     }
+
+     .underline {
+         text-decoration: underline;
+     }
+     </style>-->
+</head>
+<body class="">
+
+<header>
+    <div class="container containerColor">
+        <div class="row SpacingTop SpacingSides">
+            <div class="col hideLogo">
+                <img class="img-fluid" src="{{ url_for('static', filename = 'pictures/Logo_Berufsschule_4c.jpg') }}" width="200px"
+                     alt="Logo">
+            </div>
+            <div class="col">
+            </div>
+            <div class="col ">
+                <div class="hidePictures optimizedPicture">
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="headlineFont headlineGlobal">Schulanmeldung</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="content" class="container  containerColor jumbotron">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <br>
+            <h2 class="headlineFont">Erfassen der Ausbildungsdaten</h2>
+
+            <form name="ausbildung" method="post">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label class="labelFont required">Betrieb</label>
+                        <div class="form-error">
+
+                        </div>
+                        <select id="ausbildung_betrieb" name="ausbildung[betrieb]" required="required"
+                                onchange="toggle()" class="form-control">
+                            <option value="" selected="selected">Auswählen...</option>
+                            <optgroup label="Ahorntal">
+                                <option value="7492">Andre Neuner Kfz-Werkstatt , Oberailsfeld</option>
+                                <option value="7503">Autohaus Ollet , Körzendorf 55</option>
+                                <option value="7623">Christof Dannhäußer Bauunternehmen GmbH , Freiahorn 38</option>
+                                <option value="7035">Richter R &amp; W GmbH Steuerungstechnik , Körzendorf 52</option>
+                                <option value="7038">Richter R &amp; W Steuerungstechnik GmbH , Körzendorf 52</option>
+                                <option value="7165">Schreinerei Martin Thiem , Adlitz 6</option>
+                            </optgroup>
+                            <optgroup label="Altenkunstadt">
+                                <option value="7624">Schreinerei-Zimmerei Matthias Fischer , Bürgermeister-Püls-Str. 4
+                                </option>
+                            </optgroup>
+                            <optgroup label="Altenplos">
+                                <option value="7445">Stefan Kirschner Metallbau , Ernteweg 14</option>
+                            </optgroup>
+                            <optgroup label="Amberg">
+                                <option value="7451">Kolping Amberg , Raigeringer Str. 25</option>
+                                <option value="7432">Michael Höcherl Spenglerei , Am Sand 24</option>
+                            </optgroup>
+                            <optgroup label="Ampfing">
+                                <option value="7262">Peppermind Systems e. K. , Zangberger Straße 3</option>
+                            </optgroup>
+                            <optgroup label="Ansbach">
+                                <option value="7669">Fernseh-Telekommunikations-Service GmbH FTS Ansbach ,
+                                    Oberhäuserstr. 55
+                                </option>
+                                <option value="7017">Kaiser Bürotechnik , Industriestr. 9</option>
+                                <option value="7233">Kaiser-Bürotechnik , Werner-von-Siemens-Str. 17</option>
+                            </optgroup>
+                            <optgroup label="Aschaffenburg">
+                                <option value="6869">Gleich GmbH - Sicherheitstechnik und Medientechnik , Daimlerstr.
+                                    16
+                                </option>
+                            </optgroup>
+                            <optgroup label="Auerbach">
+                                <option value="6983">Elektro Beyer GmbH , Speckbachweg 8</option>
+                                <option value="7587">Waldmann Metallbau , Obere Vorstadt 5</option>
+                            </optgroup>
+                            <optgroup label="Aufseß">
+                                <option value="7145">Penning &amp; Simper GmbH Schreinerei , Schulstr. 126</option>
+                            </optgroup>
+                            <optgroup label="Aufseß  OT Sachsendorf">
+                                <option value="7600">Holzbau Dieter Wolf , Schlossstraße 7 a</option>
+                            </optgroup>
+                            <optgroup label="Bad Aibling-Willing">
+                                <option value="6961">Stigloher Betonwerk , Pullacherstr. 27</option>
+                            </optgroup>
+                            <optgroup label="Bad Berneck">
+                                <option value="6864">Bauer Holzbau GmbH , Maintalstraße 151</option>
+                                <option value="6990">Elektro Dörfler , Maintalstr. 155a</option>
+                                <option value="7213">Frenzelit GmbH , Frankenhammer 4</option>
+                                <option value="7001">Frenzelit GmbH , Frankenhammer 7</option>
+                                <option value="7404">Frenzelit GmbH , Frankenhammer 7</option>
+                                <option value="7326">Frisurenwerk Daniela Kämpf , Maintalstr. 105</option>
+                                <option value="7008">Hartsteinwerke Schicker OHG , Rimlasgrund 36</option>
+                                <option value="6862">Holzbau B&amp;B, Christoph Bauer , Latschenweg 4a</option>
+                                <option value="7498">Motor-Nützel Bad Berneck , August-Mittelsten-Scheid-Str. 1</option>
+                            </optgroup>
+                            <optgroup label="Bad Bocklet">
+                                <option value="7013">Höchemer Büro GmbH &amp; Co.KG , Mangelsfeld 10</option>
+                            </optgroup>
+                            <optgroup label="Bad Kissingen">
+                                <option value="6942">Anton Schick GmbH &amp; Co. KG , Häuserschlag 3</option>
+                            </optgroup>
+                            <optgroup label="Bad Lobenstein">
+                                <option value="7671">H. Frieser , Saaldorf 34</option>
+                            </optgroup>
+                            <optgroup label="Bad Staffelstein">
+                                <option value="6891">Fa. Görtler &amp; Schramm GmbH , Adam-Riese-Str. 6</option>
+                            </optgroup>
+                            <optgroup label="Bad Steben">
+                                <option value="7129">Griesbach Armin Schreinerei , Hügelweg 7</option>
+                                <option value="7673">Malerfachbetrieb Reiss GmbH , Bobengrüner Str. 6</option>
+                            </optgroup>
+                            <optgroup label="Bad Windsheim">
+                                <option value="7646">Hartmann GmbH expert , Illesheimer Str. 13</option>
+                            </optgroup>
+                            <optgroup label="Bamberg">
+                                <option value="7181">Auto-Scholz GmbH &amp; Co. KG , Kärntenstr. 1</option>
+                                <option value="7199">Deutsche Telekom AG , Memmelsdorfer Str. 209-211</option>
+                                <option value="7296">Deutsche Telekom AG Niederlassung Bamberg , Memmelsdorfer Str. 209
+                                    a
+                                </option>
+                                <option value="7248">Mediengruppe Oberfranken Finanz u. S. GmbH &amp; Co.KG ,
+                                    Gutenbergstr. 1
+                                </option>
+                                <option value="7260">Otto-Friedrich-Universität Bamberg , Kapuzinerstr. 16</option>
+                                <option value="7189">Robert Bosch GmbH , Robert-Bosch-Str. 40</option>
+                                <option value="6957">Spundwerk GbR , Gaustadter Hauptstraße 32 a</option>
+                                <option value="7286">Stadt Bamberg , Heinrichsdamm 1</option>
+                                <option value="7617">Stadt Bamberg , Untere Sandstr. 30a</option>
+                                <option value="7289">Stadtnetz Bamberg , Margaretendamm 28</option>
+                                <option value="6959">Steck Dach &amp; Holzbau , Abt.-Wolfram-Ring 18</option>
+                                <option value="7595">Weigel &amp; Schrüffer GmbH , Dieselstr. 1</option>
+                                <option value="6885">Zimmerei Freitag , Jakobsplatz 2</option>
+                                <option value="6965">Zimmerei Patrick Stubenrauch , Innere Löwenstr. 21</option>
+                            </optgroup>
+                            <optgroup label="Bayreuth">
+                                <option value="7354">A.T.U. Bayreuth , Sophian-Kolb-Str. 6 a</option>
+                                <option value="6975">ABV Sicherheitssysteme GmbH , Bamberger Str. 15</option>
+                                <option value="7172">Agentur Brandmarker GmbH Marketing &amp; Design , Bindlacher Str.
+                                    10
+                                </option>
+                                <option value="7077">Andre Langer Malerbetrieb , Elias-Räntz-Str. 2</option>
+                                <option value="7139">Andreas Oetter GmbH Bau- und Möbelschreinerei , Humboldtstraße 6
+                                </option>
+                                <option value="7177">AOK Bayern Rechenzentrum Bayreuth kubus IT , Karl-Marx-Str. 7a
+                                </option>
+                                <option value="7426">Auto Hauswurz , Dürschnitz 2</option>
+                                <option value="7429">Auto Hensel GmbH &amp; Co. KG , Himmelkronstr. 12</option>
+                                <option value="7443">Auto Karadas , Gottlieb-Keim-Str. 1</option>
+                                <option value="7508">Auto Perfekt , Geigenreuth 2</option>
+                                <option value="7526">Auto PS Servicestation Konstantin Reichel , Grüner Baum 5 1/2
+                                </option>
+                                <option value="7095">Auto-Scholz , Wolfsbacher Str. 10</option>
+                                <option value="7541">Auto-Scholz GmbH u. Co. KG (Schriftverkehr immer an
+                                    Personalabteilung in BA) , Wolfsbacher Str. 10
+                                </option>
+                                <option value="7542">Auto-Scholz Sportwagen GmbH , Wolfsbacher Str. 6</option>
+                                <option value="7527">Autohaus BMW Rhein , Justus-Liebig-Str. 41</option>
+                                <option value="6855">Autohaus Fischer, Inh. Stefan Müller e.K. , Gottlieb-Keim-Straße
+                                    22
+                                </option>
+                                <option value="7592">Autohaus Wedlich GmbH , Äußere Badstr. 4</option>
+                                <option value="7107">Autolackiererei Schott , Theodor-Schmidt-Str. 31</option>
+                                <option value="7383">Autoservice Danush GmbH , Erlanger Str. 67</option>
+                                <option value="7514">Autoservice Popp GbR , Robert-Koch-Str. 1</option>
+                                <option value="7182">AVS GmbH , Josephsplatz 8</option>
+                                <option value="7321">Barbierboss NO 2 , Maximilianstr. 85</option>
+                                <option value="6976">Basell Bayreuth Chemie GmbH , Weiherstr. 40</option>
+                                <option value="7360">Basell Bayreuth Chemie GmbH , Weiherstr. 40</option>
+                                <option value="6979">Bayernland eG , Bindlacher Str. 12</option>
+                                <option value="7366">Bayernland eG. , Bindlacher Str. 12</option>
+                                <option value="6978">Bayernwerk Netz GmbH , Bernecker Str. 70</option>
+                                <option value="7362">BayWa AG Bayreuth , Gottlieb-Keim-Str. 49</option>
+                                <option value="6980">Bechert Technik &amp; Service GmbH , Justus-Liebig-Str. 5</option>
+                                <option value="7528">Bedachungstechnik Richter GmbH Klempnertechnik , Ottostr. 5
+                                </option>
+                                <option value="7187">Bezirk Oberfranken , Cottenbacher Str. 23</option>
+                                <option value="7186">Bezirkskrankenhaus Bayreuth , Nordring 2</option>
+                                <option value="6984">Bezirkskrankenhaus Oberfranken Kommunalunternehmen Kliniken u.
+                                    Heime , Nordring 2
+                                </option>
+                                <option value="7113">Bezold GmbH &amp; Co. KG , Ottostr. 3</option>
+                                <option value="6986">bfz Bayreuth , Eduard-Bayerlein-Str. 3</option>
+                                <option value="7061">bfz Bayreuth , Eduard-Bayerlein-Str. 3</option>
+                                <option value="7115">bfz Bayreuth , Eduard-Bayerlein-Str. 3</option>
+                                <option value="7619">bfz Bayreuth Berufliche Fortbildungszentren der Bayerischen
+                                    Wirtschaft GmbH , Eduard-Bayerlein-Str. 3
+                                </option>
+                                <option value="7371">Brauerei Gebrüder Maisel , Hindenburgstr. 9</option>
+                                <option value="7361">British American Tobacco (Germany) GmbH , Weiherstr. 26</option>
+                                <option value="7373">Brütting Stephan Kfz-Service , Sophian-Kolb-Str. 8</option>
+                                <option value="6987">BT Elektro GmbH , Waldsteinring 6</option>
+                                <option value="7376">Bundespolizei Bayreuth , Christ.-Ritter-v.-Popp-Str. 25</option>
+                                <option value="7377">Burkhardt-Löffler , Carl-Kolb-Str. 8</option>
+                                <option value="7363">Burkhardt-Löffler BT GmbH , Carl-Kolb-Str. 8</option>
+                                <option value="7191">Business Systemhaus AG , Himmelkronstr. 18</option>
+                                <option value="7193">communicall GmbH , Weiherstr. 19</option>
+                                <option value="7378">CUBE Store Multicycle , Bindlacher Str. 4</option>
+                                <option value="7323">Cutting Crew Andreas Nuissl , Badstr. 7</option>
+                                <option value="7194">Cybex - Columbus , Riedinger Str. 18</option>
+                                <option value="7500">Deutsche Post AG NL BRIEF Bayreuth , Am Briefzentrum 1</option>
+                                <option value="7195">Deutsche Telekom AG , Ziegelleite 2-4</option>
+                                <option value="7304">Deutsche Telekom AG , Ziegelleite 2-4</option>
+                                <option value="7297">Deutsche Telekom AG Niederlassung Bayreuth , Wilhelm-Pitz-Str. 1
+                                </option>
+                                <option value="7201">DMS-Systemhaus GmbH , Am Bauhof 19</option>
+                                <option value="7633">Drive In - Auto Service Bayreuth GmbH , Himmelkronstr. 14</option>
+                                <option value="6991">E. INFRA GmbH , Am Pfaffenfleck 3</option>
+                                <option value="6992">Eber Elektro GmbH Herr Eber , Nürnberger Str. 28</option>
+                                <option value="6993">ebu Umformtechnik GmbH , Rathenaustr. 47</option>
+                                <option value="7393">ebu Umformtechnik GmbH , Rathenaustr. 47</option>
+                                <option value="7630">Elektro Kirschner e.K. Inh.: Stefan Hebda , An der Feuerwache 23
+                                </option>
+                                <option value="7052">Elektro Werwein GmbH , Kreuz 56</option>
+                                <option value="7676">eltric. K. Heckel GmbH , Weiherstr. 29</option>
+                                <option value="7395">Euromaster GmbH , Weiherstr. 9</option>
+                                <option value="7183">Euronics Baumann , Ludwig-Thoma-Str. 20</option>
+                                <option value="6977">Euronics Baumann , Ludwig-Thoma-Str. 20</option>
+                                <option value="6998">Fischer Haustechnik GmbH , Grüner Baum 17</option>
+                                <option value="6963">Fliesen Strutz , Hirschbergleinstr. 36</option>
+                                <option value="7209">Forensic discovery GmbH , Dammwäldchen 3</option>
+                                <option value="7400">Formentechnik Bayreuth GmbH W. Schläger ,
+                                    Ritter-v.-Eitzenberger-Str. 14
+                                </option>
+                                <option value="7000">Fränkische Baugesellschaft Freileitungsbau- u. Elektroinstallation
+                                    GmbH , Carl-Kolb-Str. 26
+                                </option>
+                                <option value="7327">Friseursalon Stephan Gaugler , Kulmbacher Str. 10</option>
+                                <option value="7331">Frisör Klier im Real-Markt , Riedingerstr. 21</option>
+                                <option value="7214">FTT Forensic Discovery GmbH , Dammwäldchen 3</option>
+                                <option value="7414">Gebhard Auto + Service , Am Pfaffenfleck 7</option>
+                                <option value="7002">GERLITZ Elektro GmbH , Ottostr. 24</option>
+                                <option value="7217">GeT IT GmbH Marius Hecht , Maximilianstr. 48</option>
+                                <option value="7208">Goodbaby (Europe) GmbH &amp; Co.KG , Riedinger Str. 18</option>
+                                <option value="7422">Grundig Business System GmbH , Weiherstr. 10</option>
+                                <option value="7221">Grundig Business Systems GmbH , Weiherstr. 10</option>
+                                <option value="7006">Grundig Business Systems GmbH , Weiherstr. 10</option>
+                                <option value="7657">Hagen Metallbau GmbH , Hirschbaumstr. 1a</option>
+                                <option value="7329">Hair-Force One Andreas Nuissl , Richard-Wagner-Str. 34</option>
+                                <option value="7437">Handwerkskammer Bayreuth , Kerschensteinerstr. 8</option>
+                                <option value="7628">Handwerkskammer für Oberfranken , Ludwig-Thoma-Str. 36a</option>
+                                <option value="7424">Hans Hacker Stahl- und Leichtmetallbau , Am Bauhof 13</option>
+                                <option value="7134">Hans Höreth GmbH &amp; Co Bau- und Möbelschreinerei ,
+                                    St.-Nikolaus-Str. 12
+                                </option>
+                                <option value="7009">Heidenreich GmbH &amp; Co. KG Elektro-Reparaturwerk , Bernecker
+                                    Str. 51
+                                </option>
+                                <option value="7573">Helmut Szam - Kfz-Meisterbetrieb , Am Bauhof 8</option>
+                                <option value="6936">Holzbau Riess , Pommernstr. 13 d</option>
+                                <option value="7229">INDV GmbH Individuelle Datenverarbeitungs-und Vertriebs GmbH ,
+                                    Moritzhöfen 8b
+                                </option>
+                                <option value="7442">Justizvollzugsanstalt , Markgrafenallee 49</option>
+                                <option value="7434">Karl Hopf GmbH , Ritter-v.-Eitzenberger-Str. 4</option>
+                                <option value="7075">Karl Kudlick Malermeister , Eduard-Bayerlein-Str. 12</option>
+                                <option value="7388">Kfz-Meisterbetrieb Döring , Egerländerstr. 22</option>
+                                <option value="7018">KLARO GmbH , Spitzwegstr. 63</option>
+                                <option value="7447">Knoll GmbH , Bernecker Str. 81</option>
+                                <option value="7019">Knoll GmbH , Bernecker Str. 81</option>
+                                <option value="7073">Kober und Tischer GbR , St. Georgen 15</option>
+                                <option value="6907">Kolb Bedachungen GmbH , Hermann-Löns-Str. 5</option>
+                                <option value="7236">Kubus IT GbR Rechnenzentrum Bayreuth , Karl-Marx-Str. 7a</option>
+                                <option value="7080">Kurt Latzko , Rübezahlweg 12</option>
+                                <option value="7334">Maisel Coiffeure , Kanzleistr. 10</option>
+                                <option value="7062">Malermeister Oleg Ehemann , Scheffelstr. 10</option>
+                                <option value="7469">MAN Nutzfahrzeuge AG , Bindlacher Str. 2</option>
+                                <option value="7249">Medi GmbH &amp; Co. KG Bayreuth , Medicusstr. 1</option>
+                                <option value="7480">Meisel Dachtechnik GmbH , Hussengutstr. 86</option>
+                                <option value="7544">Meisterbetrieb Schertel , Orionstr. 1</option>
+                                <option value="7483">MGS Motor Gruppe Sticht GmbH &amp; Co.KG , Bismarckstr. 73-75
+                                </option>
+                                <option value="7250">Mobil ISC GmbH , Rosestr. 18</option>
+                                <option value="7251">Motor Nützel GmbH , Nürnberger Str. 95</option>
+                                <option value="7502">Motor Nützel Volkswagen-Zentrum , Nürnberger Str. 95</option>
+                                <option value="7682">Motor-Nützel Audi Zentrum , Nürnberger Str. 95</option>
+                                <option value="7501">Motor-Nützel Nutzfahrzeugzentrum , Theodor-Schmidt-Str. 6</option>
+                                <option value="7086">Motor-Nützel Vertriebs-GmbH , Nürnberger Str. 95</option>
+                                <option value="7486">Motorradpark Schrembs , Sophian-Kolb-Str. 6</option>
+                                <option value="7473">MR Metallbau , Am Pfaffenfleck 14</option>
+                                <option value="7637">NAVITEL GmbH , Bernecker Str. 53</option>
+                                <option value="7372">NL Brief Bayreuth , Am Briefzentrum 1</option>
+                                <option value="7507">PePa-Bikes Petzold &amp; Pawelzik GBR , Am Pfaffenfleck 13</option>
+                                <option value="7511">Pfeiffer Andreas KFZ-Meisterbetrieb , Bernecker Str. 54 a</option>
+                                <option value="7512">Popp Fahrzeugbau GmbH , Chr.-Ritter-v.-Langh.-Str. 8</option>
+                                <option value="7033">Preccon Robotics GmbH , Dieselstr. 15</option>
+                                <option value="7269">reha team Nordbayern Gesundheitstechnik GmbH , Am Bauhof 11
+                                </option>
+                                <option value="7476">Reifen Lorenz GmbH , An der Feuerwache 21</option>
+                                <option value="7330">Salon Ipek , Frankenstr. 24</option>
+                                <option value="7335">Salon Mos Bahadir Yesim , Meistersingerstr. 2</option>
+                                <option value="7336">Salon Schrödel - Die Friseurmeister , Maximilianstr. 81</option>
+                                <option value="7552">Schlaeger Kunststofftechnik GmbH , Ritt.-v.-Eitzenberger-Str. 10
+                                </option>
+                                <option value="7554">Schlaeger Kunststofftechnik GmbH , Ritter-v.-Eitzenberger-Str. 10
+                                </option>
+                                <option value="6851">Schlenck Elektrotechnik GmbH , Ludwig-Thoma-Str. 36a</option>
+                                <option value="7147">Schreinerei Pimpl Möbelwerkstätte , Badstr. 30a/32</option>
+                                <option value="7162">Schreinerei Stahlmann GmbH , Gottlieb-Keim-Str. 58</option>
+                                <option value="7337">Schrödel - Friseure , Kirchgasse 4</option>
+                                <option value="7349">Schrödel Stylist , Maximilianstr. 81</option>
+                                <option value="7044">SES Elektrotechnik GmbH , Spitzwegstr. 63</option>
+                                <option value="7281">SmartInsurTech AG , Am Pfaffenfleck 15</option>
+                                <option value="7285">Sparkasse Bayreuth , Luitpoldplatz 11</option>
+                                <option value="7287">Stadtwerke Bayreuth , Birkenstr. 2</option>
+                                <option value="7046">Stadtwerke Bayreuth Energie und Wasser GmbH , Birkenstr. 2</option>
+                                <option value="7291">Stäubli Holding Germany GmbH , Theodor-Schmidt-Str. 19/25</option>
+                                <option value="7566">Stäubli Holding Germany GmbH , Theodor-Schmidt-Str. 19/25</option>
+                                <option value="7568">Stäubli Holding Germany GmbH , Theodor-Schmidt-Str. 19/25</option>
+                                <option value="7290">Steinbach GmbH &amp; Co. Spedition KG , Orionstr. 7</option>
+                                <option value="7569">Steiner Optik , Dr.-Hans-Frisch-Str. 9</option>
+                                <option value="7570">Storchen Garage , Oberkonnersreuther Str. 10</option>
+                                <option value="7348">SUXUL GmbH , Maximilianstr. 7</option>
+                                <option value="7295">Synerpy GmbH , Chr.-Ritter-v.-Langh.-Str. 7</option>
+                                <option value="7047">TenneT TSO GmbH Betriebszentrum Bamberg , Bernecker Str. 70
+                                </option>
+                                <option value="7305">TMT GmbH &amp; Co. KG , Nürnberger Str. 42</option>
+                                <option value="6966">Trautner-Bau GmbH &amp; Co. KG , Pottensteiner Str. 8</option>
+                                <option value="7346">Uni Cut Hairdesign , Emil-Warburg-Weg 28</option>
+                                <option value="7579">Universität Bayreuth , Universitätsstr. 30</option>
+                                <option value="7345">Visionen Haarmode , Carl-Schüller-Str. 3</option>
+                                <option value="7585">Voith Paper Air Systems GmbH , Dr.-Hans-Frisch-Str. 4</option>
+                                <option value="7586">VW-Zentrum Bayreuth , Nürnberger Str. 95</option>
+                                <option value="6922">W. Markgraf GmbH &amp; Co KG Bauunternehmung , Dieselstraße 9
+                                </option>
+                                <option value="7244">W.Markgraf GmbH &amp; Co KG , Dieselstr. 9</option>
+                                <option value="7314">Wabnitz IT &amp; Media Company GmbH , Egerländer Str. 10</option>
+                                <option value="7315">Walraven Holding GmbH &amp;. Co. KG , Karl-von-Linde-Str. 22
+                                </option>
+                                <option value="7316">WBS Training AG , Weiherstraße 26</option>
+                                <option value="7678">wnm GmbH , Waldsteinring 6</option>
+                                <option value="7089">Wohn(t)räume Reichenberger GmbH , Sophian-Kolb-Str. 6</option>
+                                <option value="7319">Xavo AG , Spinnereistr. 7</option>
+                                <option value="7053">ZAPF GmbH , Nürnberger Str. 38</option>
+                                <option value="7603">Zapf GmbH , Nürnberger Str. 38</option>
+                                <option value="7343">Zum Goldenen Schnitt , Rathenaustr. 12</option>
+                                <option value="7056">ZWT Wasser- und Abwassertechnik GmbH , Gottlieb-Keim-Str. 28
+                                </option>
+                            </optgroup>
+                            <optgroup label="Betzenstein">
+                                <option value="7513">Autohaus Polster , Leupoldstein 65</option>
+                                <option value="6865">Holz-Beck GmbH , Eckenreuth 3</option>
+                                <option value="6900">Holzbau Hümmer , Weidensees 105</option>
+                                <option value="7435">Hörl Autohaus , Schermshöhe 2</option>
+                                <option value="7103">Patrick Thaler , Alter Brunnen 4</option>
+                                <option value="7156">Schreiner Werkstatt Schneider , Am Schmidberg 16</option>
+                                <option value="6846">Zimmerei Dürler , Illafeld 14</option>
+                            </optgroup>
+                            <optgroup label="Bindlach">
+                                <option value="6871">Aqua Bohr- und Brunnenbaugesellschaft mbH , St.-Georgen-Str. 9a
+                                </option>
+                                <option value="7534">Autohaus Räthel GmbH , Leuschnitzstr. 3</option>
+                                <option value="7370">BIV Bau-und Industriegeräte Vertriebs GmbH , Goldkronacher Str.
+                                    33
+                                </option>
+                                <option value="7379">CM-Classics , Am Bahnhof 1a</option>
+                                <option value="7649">Die Malermeister Sahrmann , Am Rain 31</option>
+                                <option value="7042">Elektro Schumacher GmbH , Bühlstr. 12</option>
+                                <option value="7325">Final Cut , Eichenstr. 7</option>
+                                <option value="7466">H&amp;T Vulkanisation GbR Höreth und Trgovicic , Esbachgraben 4
+                                </option>
+                                <option value="7463">Hydraulik Lienhardt GmbH &amp; Co. KG Hacker, Manuela ,
+                                    Esbachgraben 15
+                                </option>
+                                <option value="7446">Knoll Hydraulik Systeme , Am Bahnhof 2</option>
+                                <option value="7020">Korn Elektroinstallation GmbH Inhaber Herbert Korn ,
+                                    Hans-Raithel-Str. 42
+                                </option>
+                                <option value="7137">Kreativ Holz Design , Burgstr. 8</option>
+                                <option value="7409">Metall- und Torbau Firma Frye , Esbachgraben 11</option>
+                                <option value="7255">NKD Services GmbH , Bühlstr. 5-7</option>
+                                <option value="7518">Pross und Schick GmbH , Im Letterer 6</option>
+                                <option value="7559">Schläger KFZ , St.-Georgen-Str. 17</option>
+                                <option value="7553">Schläger KFZ Michael Schläger , St.-Georgen-Str. 17</option>
+                                <option value="6835">Schreinerei Gerd Schneider , Heinersgrund 8</option>
+                                <option value="7040">SEL Schmidt Elektro GmbH , Jägersteig 8</option>
+                                <option value="7228">Systembetreuung Hofmann GmbH , Allersdorf 19</option>
+                            </optgroup>
+                            <optgroup label="Bindlach-Benk">
+                                <option value="7100">Jürgen Weich , Robert-Meister-Str. 7</option>
+                            </optgroup>
+                            <optgroup label="Bischberg">
+                                <option value="6925">Georg Montag UG &amp; Co. KG
+                                    Zimmerei-Holzhäuser-Treppenbau-Altbausanierung , Industriestr. 12
+                                </option>
+                            </optgroup>
+                            <optgroup label="Bischofsgrün">
+                                <option value="7420">Autohaus Jürgen Greiner GmbH , Birnstengel 77</option>
+                                <option value="7141">Schreinerei Meier , Birnstengel 4</option>
+                            </optgroup>
+                            <optgroup label="Breitengüßbach">
+                                <option value="7298">TeleSys Kommunikationstechnik GmbH , Industriering 14</option>
+                            </optgroup>
+                            <optgroup label="Burgebrach">
+                                <option value="6868">Euronics Ludwig Ludwig Elektro- und Netzwerktechnik GmbH &amp; Co.
+                                    KG , Am Sportplatz 6
+                                </option>
+                                <option value="6952">Zimmerei Wolfgang Schiller , Klemmenhof 2 a</option>
+                            </optgroup>
+                            <optgroup label="Burgkunstadt">
+                                <option value="7594">Baur Versand GmbH &amp; Co , Bahnhofstr. 10</option>
+                                <option value="7184">Baur-Versand GmbH &amp; Co. KG , Bahnhofstr. 10</option>
+                                <option value="7258">OFM Communications GmbH &amp; Co. KG , Kulmbacher Str. 72</option>
+                                <option value="7621">Zimmerei Bauer , Lindenweg 5</option>
+                            </optgroup>
+                            <optgroup label="Burgwindheim">
+                                <option value="7505">Guido Oppel , Untersteinach 17</option>
+                            </optgroup>
+                            <optgroup label="Buttenheim">
+                                <option value="6879">Zimmerei Engert , Im Gewerbepark 6</option>
+                            </optgroup>
+                            <optgroup label="Cham">
+                                <option value="7449">Koberger Haustechnik GmbH , Sudetenstr. 3</option>
+                            </optgroup>
+                            <optgroup label="Coburg">
+                                <option value="7614">Foto Mitschke Inh. Roland Mitschke , Mauer 12 b</option>
+                                <option value="7284">Sparkasse Coburg-Lichtenfels , Markt 2-3</option>
+                                <option value="7293">SÜC Energie und H2O GmbH , Bamberger Str. 2-6</option>
+                            </optgroup>
+                            <optgroup label="Creußen">
+                                <option value="7364">Auto Bauer e.K. , Am Steinkreuz 20</option>
+                                <option value="7116">Bau- und Möbelschreinerei Biersack GmbH , Nürnberger Str. 29
+                                </option>
+                                <option value="6997">Elektro Fassold GmbH &amp; Co. KG , Tiefenthaler Str. 3</option>
+                                <option value="7039">Elektrotechnik Schmidt , Althaidhof 89</option>
+                                <option value="7340">Haarstudio Sonja und Doreen , Vorstadt 8</option>
+                                <option value="6894">Hertel Bau , Seidwitz 16</option>
+                                <option value="6915">Küffner Bau GmbH , Schloßstraße 5</option>
+                                <option value="7482">METRIK Sondermaschinenbau e.K. , Theodor-Künneth-Str. 1</option>
+                                <option value="7643">Metrik Sondermaschinenbau e.K. , Theodor-Künneth-Str. 1</option>
+                                <option value="7485">Milde GmbH Creussen , Am Steinkreuz 3</option>
+                                <option value="7261">PASS Stanztechnik AG , Am Steinkreuz 2</option>
+                                <option value="7030">Pass Stanztechnik AG , Am Steinkreuz 2</option>
+                                <option value="7322">Salon Thomas Brendel , Nürnberger Str. 27</option>
+                                <option value="7122">Schreinerei Dostal , Thietmarplatz 5</option>
+                                <option value="6923">Schreinerei Meyer , Am Hohen Weg 7</option>
+                                <option value="6944">Thomas Schrödel Montagearbeiten , Hagenohe 6</option>
+                                <option value="7347">Trendraum , Nürnberger Str. 5</option>
+                            </optgroup>
+                            <optgroup label="Döhlau">
+                                <option value="6911">Köppel Ingenieurholzbau &amp; Zimmerei , Hofer Str. 9</option>
+                                <option value="7088">Raum und Farbe BY Metz , Ascher Str. 9</option>
+                                <option value="7560">Sommer Fassadensysteme-Stahlbau-Sicherheitstechnik GmbH &amp; Co.
+                                    KG , Industriestraße 1
+                                </option>
+                            </optgroup>
+                            <optgroup label="Döhlau / Hof">
+                                <option value="7283">Sommer Fassadensysteme-Stahlbau-Sicherheitstechnik GmbH &amp; Co.
+                                    KG , Industriestr. 1
+                                </option>
+                            </optgroup>
+                            <optgroup label="Döhlau/Tauperlitz">
+                                <option value="7076">Malerbetrieb Marco Kulke , Erlalohe 6</option>
+                            </optgroup>
+                            <optgroup label="Donnersdorf">
+                                <option value="7234">Kaufland Logistik VZ GmbH &amp; Co. KG , Am Rödertor 9</option>
+                            </optgroup>
+                            <optgroup label="Ebermannstadt">
+                                <option value="6924">Stefan Minderlein Zimmerei , Breitenbacher Str. 11</option>
+                            </optgroup>
+                            <optgroup label="Ebermannstadt/Rüssenbach">
+                                <option value="6920">Holzbau Lipfert , Lindenweg 12</option>
+                            </optgroup>
+                            <optgroup label="Ebrach">
+                                <option value="6913">Zimmerei Holzbau Krebs GmbH &amp; Co. KG , Frigolitstr. 6</option>
+                            </optgroup>
+                            <optgroup label="Eckersdorf">
+                                <option value="7104">Christian Stelzer , Wilhelminenstraße 3</option>
+                                <option value="7387">Döring und Reuth GmbH , An der Hohen Str. 2</option>
+                                <option value="7087">Rauh und Naumann , Neustädtlein 35</option>
+                                <option value="7153">Schreinerei Redel , Lochau 1</option>
+                            </optgroup>
+                            <optgroup label="Eggolsheim">
+                                <option value="7317">Wimmer IT GmbH &amp; Co. KG , In der Büg 7</option>
+                            </optgroup>
+                            <optgroup label="Egloffstein">
+                                <option value="7411">Gantke Johannes Klempnerei , Schweinthal 24</option>
+                                <option value="6921">Holzbau Friedrich Friedrich Maderer , Egilolfstr. 82</option>
+                                <option value="7642">Holzbau Singer GmbH , Bärenthalmühle 1a</option>
+                            </optgroup>
+                            <optgroup label="Ellingen-Stopfenheim">
+                                <option value="6858">AL-Franken-Fertigteil GmbH , Störzelbacher Str. 16</option>
+                            </optgroup>
+                            <optgroup label="Ellingen/Stopfenheim">
+                                <option value="6859">AL-Franken-Fertigteil GmbH , Störzelbacher Str. 16</option>
+                            </optgroup>
+                            <optgroup label="Elsenfeld">
+                                <option value="6896">Hofmann Betonteile GmbH , Erlenbacher Str. 40</option>
+                            </optgroup>
+                            <optgroup label="Erbendorf">
+                                <option value="7171">advance.media GmbH , Im Gewerbepark 29</option>
+                            </optgroup>
+                            <optgroup label="Ergolding">
+                                <option value="6954">Siegl GmbH , Mühlenstr. 4</option>
+                            </optgroup>
+                            <optgroup label="Eschenbach">
+                                <option value="7015">Novem Car Metalltechnologie GmbH , Gossenstr. 51</option>
+                            </optgroup>
+                            <optgroup label="Eschenbach/Opf.">
+                                <option value="7275">Rogers Corporation GmbH , Am Stadtwald 2</option>
+                            </optgroup>
+                            <optgroup label="Feilitzsch">
+                                <option value="7093">Malerfachbetrieb Schmidtlein , Ringgasse 6A</option>
+                                <option value="7653">SFF Fotodesign GmbH Klaus Hofmann , Bahnhofsplatz 1</option>
+                            </optgroup>
+                            <optgroup label="Fensterbach">
+                                <option value="6889">Godelmann GmbH &amp; Co. KG , Industriestr. 1</option>
+                            </optgroup>
+                            <optgroup label="Fichtelberg">
+                                <option value="7444">Auto Kellner , Bayreuther Str. 6</option>
+                                <option value="6904">Kastl Bernd , Gustav-Leutelt-Str. 20 a</option>
+                                <option value="6932">Zimmerei Ralph Reichenberger , Bahnhofstr. 5</option>
+                            </optgroup>
+                            <optgroup label="Forchheim">
+                                <option value="7607">Foto Brinke GmbH , Paradeplatz 3</option>
+                                <option value="7226">HMS GmbH , Bügstraße 89a</option>
+                                <option value="6875">Holzbau Blümlein GmbH , Breitweidig 25</option>
+                                <option value="7555">Schmidt Bedachungen GmbH &amp; Co. KG , Sebald-Kopp-Str. 4</option>
+                                <option value="7549">Thomas Schuster GmbH Flaschnerei , Reuther Str. 24</option>
+                            </optgroup>
+                            <optgroup label="Forst">
+                                <option value="6948">Matthias Schaller , Forst 7</option>
+                            </optgroup>
+                            <optgroup label="Frensdorf">
+                                <option value="6877">Bosselmann Holzbau , Lärchenstr. 6</option>
+                                <option value="7468">Peter Mai Holzbau GmbH Zimmerei - Dachdeckerei , Abtsdorfer Leite
+                                    7
+                                </option>
+                            </optgroup>
+                            <optgroup label="Gefrees">
+                                <option value="7350">1A autoservice Klaus Hahn , Witzleshofen 45a</option>
+                                <option value="7509">Autohaus Pech &amp; Riedelbauch GmbH , Böseneck 1</option>
+                                <option value="7359">Bauer Tore , Neubau 4</option>
+                                <option value="7380">Claas Nordostbayern GmbH &amp; Co. KG Gefrees , Helmut-Sandler-Str.
+                                    2
+                                </option>
+                                <option value="7430">Herold &amp; Co. GmbH Eisengießerei u. Maschinenfabrik , Hauptstr.
+                                    12
+                                </option>
+                                <option value="7494">Kfz-Service Nicklas , Lützenreuth 37</option>
+                                <option value="7467">Macht-Rallye-Technik , Witzleshofen 21</option>
+                                <option value="7636">Müller Maschinen und Anlagen GmbH &amp; Co.KG Stanz- und
+                                    Umformtechnik , Plauener Str. 2-4
+                                </option>
+                                <option value="7256">Noventi Health SE , Föhrigstr. 29-31</option>
+                                <option value="6928">Peter Panzer GmbH Zimmerei , Metzlersreuth 48</option>
+                            </optgroup>
+                            <optgroup label="Geroldsgrün">
+                                <option value="7109">Markus Wich , Hirschberglein 27</option>
+                                <option value="7135">Schreinerei Horn , Silberstein 13</option>
+                            </optgroup>
+                            <optgroup label="Gesees">
+                                <option value="7063">Förster die Malermeister , Hirtengarten 5</option>
+                                <option value="7131">Hertel Möbel Einrichtungshaus-Schreinerei , Bayreuther Str. 1-5
+                                </option>
+                                <option value="7094">Malerfachbetrieb Udo &amp; Thomas Scheer Gbr , Kirchweg 5</option>
+                                <option value="7130">Schreinerei Heidenreich GmbH , Hauptstr. 26</option>
+                            </optgroup>
+                            <optgroup label="Glashütten">
+                                <option value="7462">Leykam Kfz-Meisterbetrieb , Alte Bayreuther Str. 15</option>
+                            </optgroup>
+                            <optgroup label="Goldkronach">
+                                <option value="6876">Bobyk GmbH Estrich- und Fußbodentechnik , Peuntgasse 27</option>
+                                <option value="7427">HBK - Metallbearbeitung GmbH , Markgrafenstr. 9</option>
+                                <option value="7479">Luft- und Thermotechnik Bayreuth , Markgrafenstr. 4</option>
+                                <option value="7639">SMB Schwede Maschinenbau , Markgrafenstr. 2</option>
+                            </optgroup>
+                            <optgroup label="Grafengehaig">
+                                <option value="7455">Krumpholz-Werkzeuge Inh. Klaus Krumpholz , Guttenberger Hammer 2
+                                </option>
+                            </optgroup>
+                            <optgroup label="Großgarnstadt">
+                                <option value="6943">Holzbau Schleifenheimer , Kohlesberg 11</option>
+                            </optgroup>
+                            <optgroup label="Gundelsheim">
+                                <option value="7382">Dach + Wand Sylvia Buckel GmbH , Industriestr. 12</option>
+                            </optgroup>
+                            <optgroup label="Haag">
+                                <option value="6866">Engelbrecht &amp; Zimmermann Bauunternehmen KG , Am Haagrain 7
+                                </option>
+                            </optgroup>
+                            <optgroup label="Hagelstadt">
+                                <option value="7538">Ruhland GmbH , Erlenbachstr. 1</option>
+                            </optgroup>
+                            <optgroup label="Hahnbach">
+                                <option value="7358">Spenglerei Aures , Im Gewerbegebiet 11</option>
+                            </optgroup>
+                            <optgroup label="Hallerndorf">
+                                <option value="6945">Zimmerei Zucker , Karl-Kreul-Str. 9</option>
+                            </optgroup>
+                            <optgroup label="Hallstadt">
+                                <option value="6861">AMON Holzbau GmbH , Heganger 12</option>
+                                <option value="7245">Büro Mayer GmbH &amp; Co. KG , Emil-Kemmer-Str. 11</option>
+                                <option value="7288">Stannek GmbH , Heganger 16</option>
+                            </optgroup>
+                            <optgroup label="Harsdorf">
+                                <option value="7421">Gräf GmbH , Sandreuth 1a</option>
+                                <option value="7529">robotif GmbH , Altenreuth 1a</option>
+                            </optgroup>
+                            <optgroup label="Hartenstein">
+                                <option value="6994">ECKART GmbH , Güntersthal 4</option>
+                            </optgroup>
+                            <optgroup label="Heiligenstadt">
+                                <option value="6947">Karl Schmidt Bauunternehmung u. Betonwerk , Hauptstr. 39</option>
+                                <option value="6930">Zimmerei Pfeufer GmbH , Herzogenreuth 5</option>
+                            </optgroup>
+                            <optgroup label="Heinersreuth">
+                                <option value="7022">Elektro Küfner GmbH , Hauptstr. 6</option>
+                                <option value="7041">Energietechnik Schramm , Am Ängerlein 1</option>
+                                <option value="7398">Fischer Metallbau , Unterkonnersreuth 16</option>
+                                <option value="6899">Holzbau Hübner , Kanalstr. 5</option>
+                                <option value="7045">Sonnenbatterie Center Franken GmbH , Unterwaizer Str. 6</option>
+                                <option value="7470">Thomas Margraf Umwelt-Anlagenbau , Dr.-Hans-Friedel-Str. 16
+                                </option>
+                                <option value="7309">VEMA eG , Unterkonnersreuth 31</option>
+                                <option value="7099">Weich &amp; Seidel , Cottenbacher Str. 17</option>
+                            </optgroup>
+                            <optgroup label="Heinersreuth/Altenplos">
+                                <option value="7090">Waldemar Rosenauer Malermeister , Ährenweg 8</option>
+                            </optgroup>
+                            <optgroup label="Helmbrechts">
+                                <option value="6903">Gebr. Kaiser , Ottengrüner Str. 40</option>
+                                <option value="7207">Ingenieurbüro Fischer , Dr. Martin-Luther-Str. 18</option>
+                                <option value="7441">J.G. KnopfŽs Sohn GmbH &amp; Co. KG , August-Wagner-Str. 1</option>
+                                <option value="7458">Kunststoff AG Helmbrechts , Pressecker Str. 39</option>
+                                <option value="7238">Kunststoff Helmbrechts AG , Pressecker Str. 39</option>
+                                <option value="7522">Raumedic AG , Hermann-Staudinger-Str. 2</option>
+                                <option value="7268">RAUMEDIC AG , Hermann-Staudinger-Str. 2</option>
+                                <option value="7219">Rudi Göbel GmbH &amp; Co. KG , Max-Planck-Str. 23</option>
+                                <option value="7417">Rudi Göbel GmbH &amp; Co. KG , Max-Planck-Str. 23</option>
+                                <option value="7558">Sell Haustechnik GmbH , Schulstr. 21</option>
+                                <option value="6949">Thomas Schulz Zimmerei und Holzbau , Dürrengrüner Weg 11</option>
+                                <option value="7211">V. Fraas GmbH , Orter Str. 6</option>
+                                <option value="6845">Zimmerei Frank Dümmling , Haidengrüner Weg 9</option>
+                            </optgroup>
+                            <optgroup label="Helmbrechts-Oberweißenbach">
+                                <option value="7155">Schreinerei Reikanhas , Zur Taubaldsmühle 5</option>
+                            </optgroup>
+                            <optgroup label="Hemau">
+                                <option value="7659">Spenglerei Pollinger , Kasernenstr. 3</option>
+                            </optgroup>
+                            <optgroup label="Hiltpoltstein">
+                                <option value="6863">BAU-IN-HOLZ GmbH &amp; Co. KG , Gewerbegebiet 9</option>
+                                <option value="7150">Schreinerei Prütting , Hauptstr. 69</option>
+                            </optgroup>
+                            <optgroup label="Himmelkron">
+                                <option value="7389">Autohaus Dornig , Hofer Str. 1</option>
+                                <option value="7203">Emons Spedition GmbH , Bayreuther Str. 4</option>
+                                <option value="7403">Frenzelit GmbH , Industriestr. 4</option>
+                                <option value="7487">Mann + Hummel Innenraumfilter GmbH &amp; Co KG , Kulmbacher Str.
+                                    12
+                                </option>
+                                <option value="7026">Mann und Hummel Innenraumfilter GmbH &amp; Co. KG , Kulmbacher Str.
+                                    12
+                                </option>
+                                <option value="7495">Motor-Nützel Himmelkron , Bahnhofstr. 32</option>
+                                <option value="6951">Zimmerei Schwarz , Himmelkroner Weg 6</option>
+                            </optgroup>
+                            <optgroup label="Hof">
+                                <option value="7170">Accenture Services GmbH , Graf-Stauffenberg-Str. 6</option>
+                                <option value="7253">Auto Müller GmbH &amp; Co.KG , Ernst-Reuter-Str. 65</option>
+                                <option value="7571">Bernhard Strößner Schmiede und Autofedern-Spezialwerkstatt GmbH ,
+                                    Hüttenwerkweg 11
+                                </option>
+                                <option value="7620">bfz Hof , Schleizer Str. 5-7</option>
+                                <option value="7188">Bitzinger GmbH , Ossecker Str. 174</option>
+                                <option value="7246">Büro Mayer GmbH &amp; Co. KG (Hof) , Schlossweg 4</option>
+                                <option value="7644">collaboREX GmbH , Königstr. 6</option>
+                                <option value="7173">Dachser SE , Thomas-Dachser-Str. 1</option>
+                                <option value="7119">Diakonie am Campus , Südring 96</option>
+                                <option value="7200">Diakonie am Campus Hof gGmbH Bildungswerk , Südring 96</option>
+                                <option value="7397">Fink Glas- und Metallbau e. K. , Meiselfelder Str. 11</option>
+                                <option value="7609">Fotostudio Schwarzenbach , Marienstr. 2</option>
+                                <option value="7402">Frankenpost Verlag GmbH Jörg Greßmann , Poststr. 9/11</option>
+                                <option value="7097">Heinrich Schmid GmbH &amp; Co. KG , Am Münstergrund 17</option>
+                                <option value="7564">Heinrich Spiess KG , Carl-Benz-Str. 10</option>
+                                <option value="7074">Herbert Kreutzer GmbH , Marienstr. 20-22</option>
+                                <option value="7227">Hofer Textilveredelungs GmbH , Leon-Gonczarowski-Str. 1</option>
+                                <option value="7301">Hoftex Group AG , Fabrikzeile 21</option>
+                                <option value="7230">in-Reach UG &amp; Co.KG Arkadius Schel , Altstadt 2-4</option>
+                                <option value="7241">Lansco GmbH , Ossecker Str. 172</option>
+                                <option value="7106">Malerfachbetrieb Shala e. K. , Yorckstr. 25</option>
+                                <option value="7672">Malermeister Langheinrich , Dr.-Ebert-Str. 5</option>
+                                <option value="7367">MB Metallbau Belter GmbH , Schaumbergstr. 5</option>
+                                <option value="7460">Metallbau Lammel , Wunsiedler Str. 10</option>
+                                <option value="7506">PackTec Maschinenbau GmbH , Leopoldstr. 64</option>
+                                <option value="7537">Rucker Stahlbau - Metallbau , Starenweg 13</option>
+                                <option value="7163">Schreinerei Stiller GmbH &amp; Co. KG , Alte Helmbrechtser Str.
+                                    64
+                                </option>
+                                <option value="7616">Schwarzenbach Fotografie , Altstadt 14-16</option>
+                                <option value="7292">Stadt Hof , Klosterstr. 1</option>
+                                <option value="7164">Stöhr Schreinerei , Nußhardtstr. 3</option>
+                                <option value="7299">Telekom Shop , Oberes Tor 5</option>
+                                <option value="7575">Tenowo Hof GmbH , Fabrikzeile 21</option>
+                                <option value="7310">Viessmann Kältetechnik AG , Schleizerstr. 100</option>
+                                <option value="7313">Vogler Engineering GmbH , Wunsiedler Straße 7</option>
+                                <option value="7598">Wilo SE - Werk Hof , Heimgartenstr. 1-3</option>
+                            </optgroup>
+                            <optgroup label="Hof-Gattendorf">
+                                <option value="7391">DGH HOF GmbH und Co.KG , Ferdinand-Porsche-Str. 11</option>
+                            </optgroup>
+                            <optgroup label="Hof/Saale">
+                                <option value="7222">Güttler Logistik GmbH , Fuhrmannstr. 8</option>
+                            </optgroup>
+                            <optgroup label="Hohenberg an der Eger">
+                                <option value="6968">Zimmerei Wegmann e. K. , Königsmühle 1</option>
+                            </optgroup>
+                            <optgroup label="Hohenburg">
+                                <option value="7565">Schaller Alexander Spenglerei , Martinshöhe 5</option>
+                            </optgroup>
+                            <optgroup label="Hollfeld">
+                                <option value="7111">Appel GmbH Bau- und Möbelschreinerei , Hofäckerstraße 6</option>
+                                <option value="7356">Auto Mai GbR , Südstr. 10</option>
+                                <option value="7658">Auto-Müller GmbH , Treppendorfer Str. 2</option>
+                                <option value="6917">Eduard Lauer Zimmerei , Friedrich-Pezold-Str. 15</option>
+                                <option value="7014">Hoffmann Elektrotechnik GmbH , Stechendorf 58</option>
+                                <option value="7069">Hofmann - Erhalten und Gestalten , Badstr. 5</option>
+                                <option value="7084">Maler- und Putzgeschäft Weiß GmbH , Krögelstein 116</option>
+                                <option value="7068">Michael Hofmann - Erhalten und Gestalten , Badstr. 5</option>
+                                <option value="7535">Röhm &amp; Roder GmbH Zaunanlagen - Torbau - Elektro , Flurstraße
+                                    3
+                                </option>
+                                <option value="7282">Solutioo - Tobias Göhl it &amp; web technologies , Fernreuther Weg
+                                    4
+                                </option>
+                                <option value="7308">TR-Data , Badstr. 16</option>
+                                <option value="6847">Zimmerei Dusella , Weiher 41</option>
+                            </optgroup>
+                            <optgroup label="Hösbach">
+                                <option value="7668">Elektro Beisler GmbH , Hauptstraße 68</option>
+                                <option value="7049">Technical Repair Service GmbH (ehem. Radio Albert GmbH) ,
+                                    Boschstraße 8
+                                </option>
+                            </optgroup>
+                            <optgroup label="Hummeltal">
+                                <option value="7625">Hauenstein Estriche GmbH , Am Mailand 9</option>
+                                <option value="7626">Stiefler Hoch- und Tiefbau GmbH , Bayreuther Str. 18</option>
+                            </optgroup>
+                            <optgroup label="Immenreuth">
+                                <option value="7666">Bernhard Schönfelder , Schadersberg 6</option>
+                                <option value="7576">Trassl Polymer Solutions GmbH , Kulmainer Str. 44</option>
+                            </optgroup>
+                            <optgroup label="Itzgrund">
+                                <option value="6882">Finzel und Lindenlaub Holzbau GmbH , Welsberg 6</option>
+                            </optgroup>
+                            <optgroup label="Itzgrund  /  OT Lahm">
+                                <option value="6884">Förtsch Holzbau GmbH , Schulweg 3</option>
+                            </optgroup>
+                            <optgroup label="Kasendorf">
+                                <option value="7175">ait-deutschland GmbH , Industriestr. 3</option>
+                                <option value="6950">Erich Schuster Zimmerei , Welschenkahl 41</option>
+                                <option value="7212">Franken Maxit GmbH &amp; Co. , Azendorf 63</option>
+                                <option value="7406">Franken Maxit Mauermörtel GmbH , Azendorf 63</option>
+                                <option value="7016">K + S Richter Schaltanlagenbau GmbH , Peesten 56</option>
+                                <option value="6919">Leykam Holzbau GmbH , Krumme Fohre 98</option>
+                                <option value="6838">Maja-Werk Manfred Jarosch GmbH &amp; Co. KG , Industriestr. 14
+                                </option>
+                                <option value="7271">Richter Steuerungstechnik GmbH , Krumme Fohre 67</option>
+                                <option value="7034">Richter Steuerungstechnik GmbH , Krumme Fohre 67</option>
+                            </optgroup>
+                            <optgroup label="Kaufbeuren">
+                                <option value="6843">Dobler GmbH &amp; Co. KG , Innovapark 20</option>
+                            </optgroup>
+                            <optgroup label="Kemmern">
+                                <option value="7450">Thomas Koffler Spenglerei - Dachdeckerei , Mainstr. 7</option>
+                            </optgroup>
+                            <optgroup label="Kemnath">
+                                <option value="6995">EHP - Elektro Holger Pühl , Rohrwiesen 3</option>
+                                <option value="7263">Ponnath Dein Meistermetzger GmbH , Bayreuther Str. 40</option>
+                            </optgroup>
+                            <optgroup label="Kirchensittenbach">
+                                <option value="6972">Zimmerei Zeltner , Oberkrumbach 5</option>
+                            </optgroup>
+                            <optgroup label="Kirchenthumbach">
+                                <option value="6934">Holzbau Reisner GmbH , Görglaser Str. 37</option>
+                            </optgroup>
+                            <optgroup label="Ködnitz">
+                                <option value="6892">Michael Heisinger Holzbau und Zimmerei , Tennach 7</option>
+                                <option value="7580">Unkauf Stahl- und Maschinenbau GmbH , Kauerndorf 12</option>
+                            </optgroup>
+                            <optgroup label="Konradsreuth">
+                                <option value="7176">ALUKON KG , Münchbergerstr. 31</option>
+                                <option value="7357">Alukon KG , Münchberger Str. 31</option>
+                                <option value="7083">Roland Müller e. K , Brunnenstr. 6</option>
+                                <option value="7243">Willy Maisel GmbH , Münchberger Straße 46</option>
+                            </optgroup>
+                            <optgroup label="Kösching">
+                                <option value="6873">Betonbau GmbH &amp; Co. KG NL Kösching , Einsteinstr. 8</option>
+                            </optgroup>
+                            <optgroup label="Kronach">
+                                <option value="7280">Dr. Schneider Kunststoffwerke GmbH , Lindenstr. 10-12</option>
+                                <option value="7618">Foto Thron , Schwedenstr. 11</option>
+                                <option value="7481">Tino Messelberger Klempner , Ziegelerden 62</option>
+                            </optgroup>
+                            <optgroup label="Kulmbach">
+                                <option value="7355">A.T.U. Kulmbach Auto-Teile Unger , E.-C.-Baumann-Str. 2</option>
+                                <option value="7178">applab GmbH , Am Eulenhof 14</option>
+                                <option value="7548">Auto-Scholz Kulmbach PKW , Albert-Ruckdeschel-Str. 31</option>
+                                <option value="7660">Autohaus BMW Rhein Kulmbach , Am Milchhof 1</option>
+                                <option value="7593">Autohaus Wedlich GmbH , Saalfelder Str. 1</option>
+                                <option value="7663">Autohaus Zillig GmbH , Fröbelstr. 12</option>
+                                <option value="7365">Baumann Druck GmbH &amp; Co. KG , E.-C.-Baumann-Str. 5</option>
+                                <option value="7675">Börsenmedien AG , Am Eulenhof 14</option>
+                                <option value="7190">breadcrumb mediasolutions GmbH , Kressenstein 26</option>
+                                <option value="7196">dc AG , Von-Linde-Str. 11</option>
+                                <option value="7385">Dippold GmbH Autohaus , Kronacher Str. 2</option>
+                                <option value="7390">Dörnhöfer Stahl-Metallbau GmbH &amp; Co. KG Herr Höreth Frau
+                                    Hollweg , Am Kreuzstein 15
+                                </option>
+                                <option value="7023">Elektro Kurz und Erlmann , Hauptstr. 42</option>
+                                <option value="7324">essanelle - Ihr Friseur Irina Belz , Fritz-Hornschuch-Str. 9
+                                </option>
+                                <option value="7368">Flaschnerei Beszczynski GmbH , Albert-Ruckdeschel-Str. 1</option>
+                                <option value="7667">Flaschnerei Hofius Torsten Hofius , Weiherer Str. 6</option>
+                                <option value="7651">Flatex AG Thomas Müller , E.-C.-Baumann-Str. 8</option>
+                                <option value="7399">Fleischmann Holzbau GmbH &amp; Co. KG , Leitenacker 7</option>
+                                <option value="7344">Frank Walther Friseursalon , Hauptstr. 28</option>
+                                <option value="7410">Galler Lager- u. Regaltechnik GmbH , Robert-Galler-Str. 1</option>
+                                <option value="7602">Gienanth Zaigler MBA GmbH , Gummistr. 28</option>
+                                <option value="7218">Glen Dimplex Deutschland GmbH , Am Goldenen Feld 18</option>
+                                <option value="6989">Glen Dimplex Kulmbach , Am Goldenen Feld 18</option>
+                                <option value="7415">Glen Dimplex Thermal Solutions , Am Goldenen Feld 18</option>
+                                <option value="7425">Hahn Autotechnik e.K. , Am Goldenen Feld 17</option>
+                                <option value="7225">Hippolyt Thum Bürotechnik , Gummistr. 21</option>
+                                <option value="7125">Holzbau Fleischmann GmbH &amp; Co. KG , Leitenacker 7</option>
+                                <option value="6883">Holzbau Fleischmann GmbH &amp; Co. KG Inh. Harald Fleischmann ,
+                                    Leitenacker 7
+                                </option>
+                                <option value="6837">ic innovative software GmbH , Kressenstein 26</option>
+                                <option value="7439">Ireks GmbH , Lichtenfelser Str. 20</option>
+                                <option value="7070">Jugendwerkstatt Kulmbach , E.-C.-Baumann-Str. 4</option>
+                                <option value="7471">Karl Mattis GmbH Flaschnerei , Lichtenfelser Str. 54A</option>
+                                <option value="7656">Kfz Götz , Lösau 13</option>
+                                <option value="7407">Konrad Friedrichs GmbH &amp; Co. KG , Vorwerkstr. 20</option>
+                                <option value="7452">Korn &amp; Schwenk GmbH Autohaus Albin Korn ,
+                                    Albert-Ruckdeschel-Str. 6
+                                </option>
+                                <option value="7237">Kulmbacher Brauerei AG , Lichtenfelser Str. 9</option>
+                                <option value="7078">Lakierzentrum Kulmbach , Vorwerkstr. 18</option>
+                                <option value="7239">Landratsamt Kulmbach , Konrad-Adenauer-Str. 5</option>
+                                <option value="7081">Ludewig Lackierung , Gummistr. 20</option>
+                                <option value="7082">Ludewig Lackierung , Gummistr. 20</option>
+                                <option value="7071">Malergeschäft Kamlowski , Alte-Mia-Str. 1a</option>
+                                <option value="7108">Malergeschäft Will GmbH , Forstweg 25</option>
+                                <option value="7386">Maschinen- und Werkzeugbau Dittrich , Burghaigerweg 20 a</option>
+                                <option value="7247">Mediengruppe Oberfranken-Fachverlage GmbH &amp;.Co.KG ,
+                                    E.-C.-Baumann-Str. 5
+                                </option>
+                                <option value="7484">MGS-Autozentrum GmbH &amp; Co.KG , Von-Linde-Straße 10</option>
+                                <option value="7496">Motor-Nützel Kulmbach , Leitenacker 8</option>
+                                <option value="7677">PIVASOFT GmbH , Ludwig-Richter-Str. 13</option>
+                                <option value="7521">RAPS GmbH &amp; Co. KG , Adalbert-Raps-Str. 1</option>
+                                <option value="7267">Raps GmbH &amp; Co. KG , Adalbert-Raps-Str. 1</option>
+                                <option value="7599">Reifen Winni GmbH , Am Goldenen Feld 1</option>
+                                <option value="7072">Roland Kamps Malergeschäft , Bergsteig 25</option>
+                                <option value="7661">Schorsch Kraftfahrzeugtechnik GmbH , Kronacher Str. 19</option>
+                                <option value="7551">Schrutka-Peukert GmbH , E.-C.-Baumann-Str. 13</option>
+                                <option value="7105">SKO , Ziegelhüttener Str. 21</option>
+                                <option value="7574">Taubenreuther GmbH , Am Schwimmbad 8</option>
+                                <option value="7306">Töpfer Kulmbach GmbH , Am Kreuzstein 5</option>
+                                <option value="6908">Zimmerei Heinz Konrad GmbH &amp; Co. KG , Theodor-Heuss-Allee 1
+                                </option>
+                            </optgroup>
+                            <optgroup label="Kümmersbruck">
+                                <option value="7597">Andreas Wenig Spenglerei , Haager Str. 4</option>
+                            </optgroup>
+                            <optgroup label="Küps">
+                                <option value="7339">Haarstudio Sie &amp; Er , Theisenorterstr. 8</option>
+                            </optgroup>
+                            <optgroup label="Laaber">
+                                <option value="7394">Eibl Gotthard , Regensburger Str. 9</option>
+                                <option value="7596">Spenglerei Weinzierl , Riegelweg 6</option>
+                                <option value="7591">Weigert Spenglerei , Hochstraße 29a</option>
+                            </optgroup>
+                            <optgroup label="Lappersdorf">
+                                <option value="7540">Sattler SIS GmbH , Regendorfer Str. 20</option>
+                            </optgroup>
+                            <optgroup label="Lauter">
+                                <option value="6893">Zimmerei Hemmer , Leppelsdorfer Str. 5</option>
+                            </optgroup>
+                            <optgroup label="Lauterhofen">
+                                <option value="6849">MEIER Betonwerke u. Baustoffhandel GmbH , Zur Schanze 2</option>
+                            </optgroup>
+                            <optgroup label="Leupoldsgrün">
+                                <option value="6897">Holzschuher Baugeschäft GmbH &amp; Co. KG , Sportplatzstr. 13
+                                </option>
+                            </optgroup>
+                            <optgroup label="Lichtenberg">
+                                <option value="7151">Schreinerei Matthias Quehl , Sieleinsweg 3</option>
+                            </optgroup>
+                            <optgroup label="Lisberg">
+                                <option value="7577">Alfred Tröppner , Zum Eichelsee 1</option>
+                            </optgroup>
+                            <optgroup label="Lohr a. Main">
+                                <option value="6985">bfz GmbH Lohr , Heinz-Paulisch-Str. 5</option>
+                            </optgroup>
+                            <optgroup label="Ludwigsstadt">
+                                <option value="6836">Eichhorn Bauunternehmung GmbH &amp; Co.KG , Lauensteiner Str. 55
+                                </option>
+                                <option value="7590">Max Weber Inh. Christian Heyder , Bahnhofstr. 6</option>
+                            </optgroup>
+                            <optgroup label="Mainleus">
+                                <option value="7332">Klötzer Friseure , Hauptstr. 35</option>
+                                <option value="7457">Künzel Maschinenbau GmbH , Industriestr. 7</option>
+                                <option value="7584">Max Voggenreiter GmbH , Industriestr. 9/10</option>
+                                <option value="7342">Simone&#039;s MainSchnitt , Hauptstr. 69</option>
+                                <option value="6909">Zimmerei G. Kögel Holzbau - Bedachungen , Schimmendorf 25</option>
+                                <option value="6960">Zimmerei Stenglein , Am Schloss 12</option>
+                            </optgroup>
+                            <optgroup label="Markleuthen">
+                                <option value="7488">Müller Bedachungen GmbH , Siemensstr. 9</option>
+                            </optgroup>
+                            <optgroup label="Marktleugast">
+                                <option value="7010">Hermos Schaltanlagen GmbH Niederlassung Tannenwirtshaus ,
+                                    Tannenwirtshaus 34
+                                </option>
+                                <option value="7127">Schreinerei Friedrich GmbH , Marienweiher 186</option>
+                            </optgroup>
+                            <optgroup label="Marktleuthen">
+                                <option value="7057">Acus-Tro e.K , Siemensstr. 1b</option>
+                                <option value="7128">Schreinerei GKL GmbH , Hofer Str. 4</option>
+                            </optgroup>
+                            <optgroup label="Marktredwitz">
+                                <option value="7220">ABM Greiffenberger Antriebstechnik GmbH , Friedenfelser Str. 24
+                                </option>
+                                <option value="7352">ABM Greiffenberger Antriebstechnik GmbH , Friedenfelser Str. 24
+                                </option>
+                                <option value="7059">Allgemeine Baugenossenschaft , Breslauer Str. 22</option>
+                                <option value="7629">bfz Marktredwitz , Wölsauer Str. 20-26</option>
+                                <option value="7192">CeramTec GmbH , CeramTec-Weg 1</option>
+                                <option value="7489">Müssel Maschinenbau GmbH , Reichelsweiherstr. 8</option>
+                                <option value="7265">ProComp Professional Computer GmbH , Industrieallee 1</option>
+                                <option value="7031">Radio Plischke GmbH , Klingerstr. 3-5</option>
+                                <option value="7384">RHI Magnesita Didier-Werke AG , Oskar-Gebhardt-Str. 2</option>
+                                <option value="6941">Rupprecht GmbH , Brückenstr. 9</option>
+                                <option value="7278">Scherdel GmbH , Scherdelstr. 2</option>
+                                <option value="7545">Scherdel GmbH , Scherdelstr. 2</option>
+                                <option value="7144">Schreinerei Pausch , Böttgerstr. 1</option>
+                                <option value="7167">Schreinerei Weiß , Am Rang 22</option>
+                            </optgroup>
+                            <optgroup label="Marktrodach">
+                                <option value="6840">Heinrich Dennewill GmbH , Hauptstr. 2</option>
+                            </optgroup>
+                            <optgroup label="Marktschorgast">
+                                <option value="7374">BSA GmbH , Bernecker Str. 5</option>
+                                <option value="7126">Frankia - GP GmbH , Bernecker Str. 12</option>
+                                <option value="7583">Vitrulan Textile Glas GmbH , Bernecker Str. 8</option>
+                                <option value="7050">VITRULAN Textilglas GmbH , Berneckerstr. 8</option>
+                                <option value="7312">Vitrulan-International GmbH , Bernecker Str. 8</option>
+                            </optgroup>
+                            <optgroup label="Marloffstein">
+                                <option value="7392">Dunkel Flaschnereimeisterbetrieb , Ringstr. 10</option>
+                            </optgroup>
+                            <optgroup label="Massing">
+                                <option value="6918">Laumer Bautechnik GmbH , Bahnhofstr. 8</option>
+                                <option value="6935">Rembeck KG , Wolfsegger Str. 2</option>
+                            </optgroup>
+                            <optgroup label="Meeder">
+                                <option value="6912">Zimmerei Krahl , Grundweg 3</option>
+                            </optgroup>
+                            <optgroup label="Meeder  OT Großwalbur">
+                                <option value="7634">Christian Elsner Heizungsbau , Pfarrgasse 4</option>
+                            </optgroup>
+                            <optgroup label="Meeder / Großwalbur">
+                                <option value="6878">Büschel GmbH &amp; Co. KG , Elsaer Weg 22</option>
+                            </optgroup>
+                            <optgroup label="Mehlmeisel">
+                                <option value="7557">Auto Sebald Herr Harald Sebald Herr Emeram Zeitler , Hammerweg 5
+                                </option>
+                                <option value="7024">Elektro Lautenbacher , Hüttstadler Weg 13</option>
+                            </optgroup>
+                            <optgroup label="Memmelsdorf">
+                                <option value="6946">Zimmerei Schlick GmbH &amp; Co. KG Hr. Christian Schlick ,
+                                    Laubender Str. 6
+                                </option>
+                            </optgroup>
+                            <optgroup label="Michelfeld">
+                                <option value="7605">Dachdeckerei Zinner GmbH , Kellerweg 4</option>
+                                <option value="6973">Zimmerei Zinner GmbH , Kellerweg 4</option>
+                            </optgroup>
+                            <optgroup label="Mindelheim">
+                                <option value="6888">Glass GmbH Bauunternehmung , Daimlerstr. 3</option>
+                            </optgroup>
+                            <optgroup label="Mistelbach">
+                                <option value="7338">Schnittstätte , Bayreuther Straße 19</option>
+                            </optgroup>
+                            <optgroup label="Mistelgau">
+                                <option value="7114">Bezold GdbR Schreinerei , Bayreuther Str. 31</option>
+                                <option value="7223">Hermos AG , Gartenstr. 19</option>
+                                <option value="7011">Hermos AG , Gartenstr. 19</option>
+                                <option value="7012">Hermos Schaltanlagen GmbH Herr Hohlweg , Gartenstraße 19</option>
+                                <option value="7423">Metallbau Gubitz , Streit 10</option>
+                                <option value="7032">Pointinger Elektro GmbH , Am Weidesbach 7</option>
+                            </optgroup>
+                            <optgroup label="Mömbris">
+                                <option value="7631">Ridacom Medienversorgung GmbH , Im Breitfeld 53</option>
+                            </optgroup>
+                            <optgroup label="Mötzing">
+                                <option value="7561">Speckner GmbH , Steinlingstr. 12</option>
+                            </optgroup>
+                            <optgroup label="Mühlhausen">
+                                <option value="7375">Burkhardt GmbH Installation , Kreutweg 2</option>
+                            </optgroup>
+                            <optgroup label="Münchberg">
+                                <option value="7210">Frankenwälder E. Held GmbH &amp; Co. KG Personalleitung: Daniela
+                                    Hofrichter , Hans-Hofmann-Str. 11
+                                </option>
+                                <option value="7231">ITL Systemhaus für Datentechnik GmbH , Friedlandstr. 1</option>
+                                <option value="7632">Klinikum Hochfranken , Hofer Str. 40</option>
+                                <option value="7493">Neutex Betriebs GmbH , Kulmbacher Str. 82</option>
+                                <option value="7152">Schreinerei Daniel Raithel , Poppenreuth 37</option>
+                                <option value="7138">Schreinerei Ernst Kielmann , Mechlenreuth 1</option>
+                                <option value="7307">Transsoft Transport Software , Schneebergstr. 8</option>
+                                <option value="7065">Udo Friedrich , Kornbergstr. 28</option>
+                                <option value="7054">Zink Technik GmbH , Stammbacher Str. 23</option>
+                            </optgroup>
+                            <optgroup label="Nagel">
+                                <option value="7197">DCS Touristik GmbH , Schulweg 2</option>
+                                <option value="6967">Zimmerei Tretter , Am Berg 4</option>
+                            </optgroup>
+                            <optgroup label="Naila">
+                                <option value="7654">Dietz Metall &amp; Technik , Dr.-Hilmar-Jahn-Str. 14</option>
+                                <option value="7413">Gebelein Laser und Biegetechnik GmbH , Oberklingensporn</option>
+                                <option value="7475">Löhner Metallbau , Mittelklingensporn 5</option>
+                                <option value="7504">ontec automation GmbH , Am Kalkofen 10</option>
+                                <option value="7259">Ontec automation GmbH , Kalkofen 10</option>
+                                <option value="6982">Radio Bernstein , Marktplatz 1</option>
+                                <option value="7140">Schreinerei Mergner , Zum Kugelfang 20</option>
+                                <option value="7303">Thüga SmartService GmbH , Zum Kugelfang 2</option>
+                            </optgroup>
+                            <optgroup label="Neudrossenfeld">
+                                <option value="6981">Behrschmidt Automation GmbH , Kulmbacher Str. 44</option>
+                                <option value="7517">Jürgen Preinl , Pechgraben 7</option>
+                                <option value="7272">Riegg &amp; Partner Intercorp. GmbH , Kulmbacher Str. 38-40
+                                </option>
+                                <option value="7615">Riegg &amp; Partner Werbeagentur GmbH , Kulmbacher Str. 38-40
+                                </option>
+                                <option value="6906">Zimmerei Kirschner GmbH , Mosinger Weg 1</option>
+                            </optgroup>
+                            <optgroup label="Neuenmarkt">
+                                <option value="7401">Förster, Matthias , Wirsbergerstr. 26</option>
+                                <option value="6937">Fred Röder Zimmerei und Treppenbau , Hegnabrunn 98</option>
+                                <option value="7252">MS Solutions Informationstechnologien , Neue Siedlung 44</option>
+                                <option value="7117">Schreinerei Ralf Bodner , Hegnabrunn 53</option>
+                                <option value="7318">X-Point-Software GmbH , Buchenstr. 6</option>
+                                <option value="6938">Zimmerei Röder , Seilweg 2</option>
+                            </optgroup>
+                            <optgroup label="Neumarkt i.d.Opf.">
+                                <option value="7454">Zimmerei-Spenglerei-Kreuzer GmbH Andreas und Martin Kreuzer ,
+                                    Schweningerstr. 23a
+                                </option>
+                            </optgroup>
+                            <optgroup label="Neuötting">
+                                <option value="6886">Freudlsperger Beton- und Kieswerke GmbH , Möhrenbachstr. 2</option>
+                            </optgroup>
+                            <optgroup label="Neusorg">
+                                <option value="7264">Powerkom , Max-Reger-Straße 25</option>
+                                <option value="7146">Schreinerei Manfred Philipp , Riglasreuth 38</option>
+                                <option value="6931">Zimmerei Pöllath , Riglasreuth 63</option>
+                                <option value="6969">Zimmerei Thomas Wegmann , Stöcken 9 a</option>
+                            </optgroup>
+                            <optgroup label="Neustadt">
+                                <option value="7610">Greiner Studios GmbH , Damaschkestr. 6</option>
+                            </optgroup>
+                            <optgroup label="Neustadt a. d. Aisch">
+                                <option value="7007">Gerhard Hartmann GmbH , Steinsweg 9-11</option>
+                            </optgroup>
+                            <optgroup label="Neustadt bei Coburg">
+                                <option value="7276">Rosenbauer IT-Systems , Liebigstr. 3</option>
+                                <option value="7300">Telenec GmbH Neustadt , Dieselstr. 5</option>
+                            </optgroup>
+                            <optgroup label="Nordhalben">
+                                <option value="6857">Adlerhaus GmbH , Titschendorfer Str. 10a</option>
+                            </optgroup>
+                            <optgroup label="Nürnberg">
+                                <option value="7055">Hans Zwick Datentechnik GmbH , Dieselstr. 30</option>
+                                <option value="7051">Vodafone Kabel Deutschland , Südwestpark 15</option>
+                            </optgroup>
+                            <optgroup label="Oberhaid">
+                                <option value="6926">Holzbau Nehr GbR , Im Maintal 2</option>
+                            </optgroup>
+                            <optgroup label="Oberkotzau">
+                                <option value="7405">Freundorfer Frank Klempnerei , Schneebergstr. 28</option>
+                                <option value="7215">GEALAN Fenster-Systeme GmbH , Hofer Straße 80</option>
+                                <option value="7412">Gealan Formteile GmbH &amp; Co. Holding KG , Hofer Str. 70-74
+                                </option>
+                                <option value="7216">GEALAN Formteile GmbH &amp; Co.Holding KG , Hofer Str. 70-74
+                                </option>
+                                <option value="7224">HFO Holding AG , Ziegeleistr. 2</option>
+                                <option value="7235">Prozesstechnik Kropf GmbH , Hofer Str. 49</option>
+                                <option value="7242">Spedition Leupold GmbH , Am Saaleschlößchen 7</option>
+                            </optgroup>
+                            <optgroup label="Oberkotzau OT Autengrün">
+                                <option value="7158">Schreinerei Schuberth , Oberpferdter Straße 3</option>
+                            </optgroup>
+                            <optgroup label="Obertrubach">
+                                <option value="6970">Die Hauszimmerei Holzbau Wölfel , Kapellenweg 6</option>
+                            </optgroup>
+                            <optgroup label="Obertrubach/Geschwand">
+                                <option value="7279">Schmetterling International GmbH &amp; Co. KG , Geschwand 131
+                                </option>
+                            </optgroup>
+                            <optgroup label="Oberviechtach">
+                                <option value="7532">Haustechnik Roth GmbH &amp; Co. KG , Gartenried 3</option>
+                            </optgroup>
+                            <optgroup label="Oettingen">
+                                <option value="6880">ENKE Schachtbau GmbH , Fürfällmühlweg 6</option>
+                            </optgroup>
+                            <optgroup label="Pegnitz">
+                                <option value="7157">Active Key GmbH &amp; Co. KG , Brunnenäcker 6</option>
+                                <option value="7433">Autohaus Bernhard Holme , Ganghoferstr. 1</option>
+                                <option value="7453">Autohaus Hermann Kotzbauer , Alte Poststr. 56</option>
+                                <option value="7436">Autohaus Hörl GmbH , Norisstr. 14</option>
+                                <option value="7641">Ceramicasa Pegnitz Fliesen Lang HV GmbH &amp; Co.KG , Am
+                                    Schlossberg 9
+                                </option>
+                                <option value="7004">Elektro Glenk GmbH , Schmiedpeunt 2</option>
+                                <option value="6999">Färber Elektro , Pegnitztalstr. 24</option>
+                                <option value="7396">FECOM Maschinenbau GmbH Dominik Deinlein , Norisstr. 5</option>
+                                <option value="7456">KSB Aktiengesellschaft , Bahnhofplatz 1</option>
+                                <option value="7021">KSB Aktiengesellschaft Werk Pegnitz , Bahnhofplatz 1</option>
+                                <option value="7497">Motor-Nützel Pegnitz , Sauerbruchstr. 23</option>
+                                <option value="7536">R &amp; B Automobile GmbH , Brunnenäcker 4</option>
+                                <option value="7353">Reifen Arnold GmbH , Kaltenthal 1</option>
+                                <option value="7118">Schreinerei Daniel Brüttinger , Bachgasse 6</option>
+                                <option value="7148">Schreinerei René Popp , Oberpfälzer Straße 18</option>
+                                <option value="7174">Wolf Der Schreiner GmbH , Kirchenweg 2</option>
+                            </optgroup>
+                            <optgroup label="Pegnitz - Bronn">
+                                <option value="7168">Schreinerei Weibart GmbH , Hufeisenstr. 2</option>
+                            </optgroup>
+                            <optgroup label="Pettendorf">
+                                <option value="7567">Stang Guido Spenglerei , Kapellenweg 5</option>
+                            </optgroup>
+                            <optgroup label="Pfreimd">
+                                <option value="7477">Lotter Haustechnik GmbH , Am Kalvarienberg 26</option>
+                            </optgroup>
+                            <optgroup label="Plankenfels">
+                                <option value="7079">Uwe Lange Malergeschäft , Bayreuther Str. 39</option>
+                            </optgroup>
+                            <optgroup label="Plech">
+                                <option value="7048">TGA Burggraf Elektrotechnik , Riegelsteiner Str. 17</option>
+                                <option value="6933">Zimmerei Reichel , Am Gottvaterberg 19</option>
+                            </optgroup>
+                            <optgroup label="Pottenstein">
+                                <option value="7101">Alfred Trautner Malergeschäft , Am Gnock 7</option>
+                                <option value="7547">Kfz Service Schmitt , Am Langen Berg 6</option>
+                                <option value="6955">Zimmerei Späthling , Forstacker 17</option>
+                            </optgroup>
+                            <optgroup label="Prebitz">
+                                <option value="7622">Braun Holz- und Treppenbau Zimmerermeister , Voita 7</option>
+                                <option value="6962">Zimmerei Stock GmbH Christian Stock , Losau 31</option>
+                            </optgroup>
+                            <optgroup label="Pressath">
+                                <option value="7179">ATP Autoteile GmbH , Am Heidweg 1</option>
+                                <option value="7608">Foto creativ Eva-Maria Windisch , Hauptstr. 4</option>
+                            </optgroup>
+                            <optgroup label="Presseck">
+                                <option value="7611">Kaiser Fotografie , Wartenfels 170</option>
+                                <option value="7133">Schreinerei Holzknock , Schnebes 10</option>
+                            </optgroup>
+                            <optgroup label="Rattelsdorf / OT Ebing">
+                                <option value="7302">thefi.com GmbH &amp; Co KG next generation technologies , Ebinger
+                                    Hauptstr. 22
+                                </option>
+                            </optgroup>
+                            <optgroup label="Rednitzhembach">
+                                <option value="7005">Graf-Maueröder Systemhaus GbR , Ziegelstr. 24</option>
+                            </optgroup>
+                            <optgroup label="Regensburg">
+                                <option value="7662">Tahedl Dach + Wand GmbH , Kronacher Str. 4</option>
+                            </optgroup>
+                            <optgroup label="Regnitzlosau">
+                                <option value="7132">Schreinerei Herpich Rudorf , Nentschauer Str. 18</option>
+                                <option value="6916">Zimmerei Gerd Künzel , Unterer Mühlweg 7</option>
+                            </optgroup>
+                            <optgroup label="Rehau">
+                                <option value="7351">3D-Mectronic - F. H. Kulke , Fabrikstraße 13</option>
+                                <option value="7240">Lamilux Heinrich Strunz Holding GmbH &amp; Co. KG Heinrich Strunz
+                                    GmbH , Zehstr. 2
+                                </option>
+                                <option value="7270">Rehau AG + Co , Otto-Hahn-Str. 2</option>
+                                <option value="7525">REHAU AG + Co Rheniumhaus , Otto-Hahn-Str. 2</option>
+                                <option value="7060">Thomas Beckstein , Fabrikstr. 10</option>
+                            </optgroup>
+                            <optgroup label="Rentweinsdorf">
+                                <option value="7206">EWC - EasyWareComputer GmbH &amp; Co.KG , Türkei 11</option>
+                            </optgroup>
+                            <optgroup label="Röslau">
+                                <option value="7143">Holz Opel , Dürnberg 4</option>
+                                <option value="7159">Reinhard Schmidt Schreinerei , Waldstr. 1</option>
+                                <option value="7121">Schreinerei Dörsch , Johannesstr. 51</option>
+                            </optgroup>
+                            <optgroup label="Röthenbach a. d. Pegnitz">
+                                <option value="6996">EP: Grau GmbH Electronic Partner , Martin-Luther-Str. 1</option>
+                            </optgroup>
+                            <optgroup label="Salgen-Bronnen">
+                                <option value="6902">KAISER konkret GmbH , Mindelstr. 60</option>
+                            </optgroup>
+                            <optgroup label="Scheßlitz">
+                                <option value="7652">Autohaus Bärenstrauch GmbH &amp; Co KG , Bamberger Str. 22</option>
+                            </optgroup>
+                            <optgroup label="Schleiz">
+                                <option value="7679">Fassadentechnik Weiser , Crispendorf 35a</option>
+                            </optgroup>
+                            <optgroup label="Schloßgattendorf">
+                                <option value="7440">Metallbau-Stahlbau Jahn , Burgstr. 23</option>
+                            </optgroup>
+                            <optgroup label="Schlüsselfeld">
+                                <option value="6841">Dennert Baustoffwelt GmbH &amp; Co. KG , Veit-Dennert-Str. 7
+                                </option>
+                            </optgroup>
+                            <optgroup label="Schönwald">
+                                <option value="7185">BEXO GmbH , Neue Str. 8</option>
+                                <option value="7102">Malerbetrieb Thumser Inh. Ute Thumser , Bahnhofstr. 4</option>
+                            </optgroup>
+                            <optgroup label="Schwarzenbach am Wald">
+                                <option value="7524">Rehau AG &amp; Co. , Walter-Münch-Str. 19</option>
+                            </optgroup>
+                            <optgroup label="Schwarzenbach/Saale">
+                                <option value="7067">Malerwerkstätte Groß , Schützenstr. 1</option>
+                                <option value="7277">Sandler AG , Lamitzmühle 1</option>
+                                <option value="7169">Schreinerei Witt , Bahnhofstr. 3</option>
+                            </optgroup>
+                            <optgroup label="Schwebheim">
+                                <option value="7037">RSA Aschenbrenner Reparatur Service , Untere Heide 2</option>
+                            </optgroup>
+                            <optgroup label="Schweinfurt">
+                                <option value="7003">Jürgen Giegler GmbH &amp; Co.KG , Friedrich-Gauß-Str. 1</option>
+                            </optgroup>
+                            <optgroup label="Selb">
+                                <option value="7204">Energieversorgung Selb-Marktredwitz GmbH , Gebrüder-Netzsch-Str.
+                                    14
+                                </option>
+                                <option value="7254">Erich Netzsch Holding GmbH &amp; Co. KG , Gebrüder-Netzsch-Str.
+                                    19
+                                </option>
+                                <option value="7464">Linseis Meßgeräte GmbH , Vielitzer Str. 43</option>
+                                <option value="7491">NETZSCH-Feinmahltechnik GmbH , Sedanstr. 70</option>
+                                <option value="7266">RAPA Automotive GmbH &amp; Co. KG , Albert-Pausch-Ring 1</option>
+                                <option value="7523">RAPA Rausch &amp; Pausch Elektrotechnische Spezialfabrik ,
+                                    Albert-Pausch-Ring 1
+                                </option>
+                                <option value="7274">Rödl IT Operation GmbH , Ludwigsmühle 10</option>
+                                <option value="7091">Rotsching GmbH , Oberweißenbach 70</option>
+                                <option value="7311">Vishay Electronic GmbH , Dr.-Felix-Zandman-Platz 1</option>
+                                <option value="7582">Vishay Electronic GmbH , Dr.-Felix-Zandmann-Platz 1</option>
+                            </optgroup>
+                            <optgroup label="Selb/Plößberg">
+                                <option value="6914">Zimmerei Alfred Künzel , Ahornweg 18</option>
+                            </optgroup>
+                            <optgroup label="Selbitz">
+                                <option value="7418">Gölkel Inh. Friedrich Gölkel Dachdeckerei/Klempnerei , Wiesenstr.
+                                    3
+                                </option>
+                                <option value="7092">Malerei Stefan Schaller , Nordstr. 13</option>
+                            </optgroup>
+                            <optgroup label="Seßlach">
+                                <option value="6964">Stefan Schreiner Zimmerei , Ringstr. 18</option>
+                            </optgroup>
+                            <optgroup label="Sonnefeld">
+                                <option value="6881">Holzleimbau Feyler , Hummenberg 2</option>
+                            </optgroup>
+                            <optgroup label="Sparneck">
+                                <option value="7120">Holz Dietel , Stockenroth 31</option>
+                                <option value="7064">Malerfachbertrieb Werner Frister , Einzelstrasse 40</option>
+                            </optgroup>
+                            <optgroup label="Speichersdorf">
+                                <option value="7515">Autohaus Hans Popp e. K. , Industriestr. 4</option>
+                                <option value="7333">Haarstudio Magic by Zeynep , Zeulenreuth 22</option>
+                                <option value="6910">Hans König &amp; Sohn GmbH , Graserstr. 4</option>
+                                <option value="7058">Malerfachbetrieb Georg Ahl GmbH , Bayreuther Str. 30</option>
+                                <option value="7098">RapidMax GmbH , Industriestr. 11</option>
+                                <option value="7531">Rosenthal GmbH , Dresdener Str. 11</option>
+                                <option value="7530">Rosenthal GmbH Porzellanfabrik Thomas am Kulm , Dresdner Str. 11
+                                </option>
+                            </optgroup>
+                            <optgroup label="Speinshart">
+                                <option value="7556">Kfz-Meisterbetrieb Schmidt , Gereon-Motyka-Siedlung 1</option>
+                                <option value="7578">Spenglerei Traßl , Am Klosterkeller 3</option>
+                            </optgroup>
+                            <optgroup label="Stadelhofen">
+                                <option value="7613">Massivmoebel24 GmbH , Steinfeld 89</option>
+                            </optgroup>
+                            <optgroup label="Stadtsteinach">
+                                <option value="6887">Gehring GmbH , Industriestr. 18</option>
+                                <option value="6852">Hofmann Fahrzeugbau , Flürlein 26</option>
+                            </optgroup>
+                            <optgroup label="Stammbach">
+                                <option value="7539">E. Schoepf GmbH &amp; Co. Velours- und Flachweberei , Rathausstr.
+                                    18-24
+                                </option>
+                                <option value="6895">HOBA-ABBUND GmbH , Oelschnitz 50</option>
+                                <option value="7428">Metallbau Heinold , Weickenreuth 8a</option>
+                                <option value="7589">Weberpals Bedachungs GmbH , Wiesenweg 16</option>
+                            </optgroup>
+                            <optgroup label="Stegaurach">
+                                <option value="7635">Heinrich Kißler Bauspenglerei , Industriestr. 4</option>
+                            </optgroup>
+                            <optgroup label="Steinwiesen">
+                                <option value="7124">Ebertsch Fensterbau , Birnbaum 91</option>
+                            </optgroup>
+                            <optgroup label="Sulzbach-Rosenberg">
+                                <option value="7478">Dachbau Luber GmbH &amp; Co. KG , Eisenhämmerstr. 13</option>
+                            </optgroup>
+                            <optgroup label="Thiersheim">
+                                <option value="7459">KWM GmbH Waagen- und Metallbau , Im Salach 5</option>
+                                <option value="7166">Ludwig Wegmann Schreinerei , Fichtenweg 6</option>
+                                <option value="7546">Schmidkonz Metallbau , Egerstr. 4</option>
+                            </optgroup>
+                            <optgroup label="Thurnau">
+                                <option value="7510">Auto Pfeiffer GmbH , Kemeritz 4</option>
+                                <option value="6854">Die Holzschmiede Massivholzmöbel GmbH , Gewerbegebiet An der
+                                    Berndorfer Straße 20
+                                </option>
+                                <option value="7029">Elektro Meyer e.K. , Industriestr. 3</option>
+                                <option value="7028">Elektro Meyer GmbH , Industriestr. 3</option>
+                                <option value="7655">Fit4U Metal Concepts GmbH , Am Hegnig 1</option>
+                                <option value="7416">Günther Gräf , Rottlersreuth 12</option>
+                                <option value="7328">Haarstudio Thurnau , Hopfenleithe 1</option>
+                                <option value="7112">Klaus Bartels Echtholzdesign , Jägerstr. 14</option>
+                                <option value="7448">Kobers Likör GmbH , Am alten Sägewerk 4</option>
+                                <option value="7465">Lutz und Wollnik , Hopfenleithe 6</option>
+                                <option value="7085">Malergeschäft Näther GmbH , In der Breiten 1</option>
+                                <option value="7550">Schminke Krantechnik GmbH , Industriestr. 4</option>
+                                <option value="7563">Schminke Krantechnik GmbH , Industriestr. 4</option>
+                                <option value="7648">SCHWENDER Energie- und Gebäudetechnik GmbH , Limmersdorfer Str. 3
+                                </option>
+                            </optgroup>
+                            <optgroup label="Tiefenbach">
+                                <option value="7369">Bittner GmbH &amp; Co. KG Spenglerei - Installation - Heizungsbau ,
+                                    Am Wiesengrund 1
+                                </option>
+                            </optgroup>
+                            <optgroup label="Töpen">
+                                <option value="7198">Dennree Versorgungs GmbH , Hofer Str. 11</option>
+                            </optgroup>
+                            <optgroup label="Trebgast">
+                                <option value="6853">H &amp; R Auto Bauer OHG , Berliner Str. 15</option>
+                            </optgroup>
+                            <optgroup label="Trogen">
+                                <option value="7149">Schreinerei Pötzl , Hauptstr. 71</option>
+                            </optgroup>
+                            <optgroup label="Tröstau">
+                                <option value="6867">Zimmerei &amp; Holzbau Purucker UG , An der Rösla 1</option>
+                            </optgroup>
+                            <optgroup label="Uehlfeld">
+                                <option value="6898">H + L Baustoffwerke GmbH , Steigerwaldstr. 8</option>
+                            </optgroup>
+                            <optgroup label="Unterhaid">
+                                <option value="7543">Dachdeckerei Schilling Herbert Schilling , Im Maintal 5a</option>
+                            </optgroup>
+                            <optgroup label="Untersiemau-Scherneck">
+                                <option value="6953">Zimmerei Ernst Seiler KG , Alte Schloßstr. 4</option>
+                            </optgroup>
+                            <optgroup label="Untersteinach">
+                                <option value="7519">Purucker Metalltechnik GmbH , Robert-Bosch-Str. 1</option>
+                                <option value="6856">Reimey Metalltechnik GmbH , Ottostr. 2</option>
+                                <option value="7650">Thomas Rosenberger , Tradgasse 8</option>
+                                <option value="7606">Wimmer GmbH Stahlbau , Carl-von-Linde-Str. 2</option>
+                            </optgroup>
+                            <optgroup label="Ursensollen">
+                                <option value="7681">Spenglerei Nico Köstler , Gewerbepark 15</option>
+                            </optgroup>
+                            <optgroup label="Vohenstrauß">
+                                <option value="7612">Fotostudio Kraus e.K. Herr Kraus , Marktplatz 30</option>
+                            </optgroup>
+                            <optgroup label="Vorbach">
+                                <option value="7180">Die Auto- und Dienstleistungsgesellschaft mbH , Hauptstraße 22
+                                </option>
+                                <option value="7142">Novem Car Interior Design , Industriestr. 45</option>
+                                <option value="7257">NOVEM Car interior design GmbH , Industriestr. 45</option>
+                            </optgroup>
+                            <optgroup label="Vorbach-Oberbibrach">
+                                <option value="7320">ZS 2Radteile GmbH Herr Jürgen Albersdorfer , Unterbibracher Str.
+                                    3
+                                </option>
+                            </optgroup>
+                            <optgroup label="Wackersdorf">
+                                <option value="7294">Syskron GmbH , Oskar-von-Miller-Str. 6b</option>
+                            </optgroup>
+                            <optgroup label="Waischenfeld">
+                                <option value="7419">Heinz Grassinger , Hubenberg 40</option>
+                                <option value="7474">Stefan Linhardt , Nankendorf 43</option>
+                                <option value="7581">Verdotec GmbH , Köttweinsdorf 38</option>
+                                <option value="7588">WILL-BURT Germany GmbH &amp; Co. KG , Fischergasse 25</option>
+                                <option value="6890">Zimmerei Georg Görl , Breitenlesau 73</option>
+                                <option value="6901">Zimmerei Kaiser GmbH &amp;. Co. KG , Nankendorf 14</option>
+                            </optgroup>
+                            <optgroup label="Waldaschaff">
+                                <option value="7670">STS Sicherheitstechnik Service GmbH , Am Heerbach 8b</option>
+                            </optgroup>
+                            <optgroup label="Waldershof">
+                                <option value="7205">ENS EDV Norbert Saar , Ludwig-Hüttner-Str. 5</option>
+                            </optgroup>
+                            <optgroup label="Waldkraiburg">
+                                <option value="6958">STANGL AG Kreativ in Beton , Niederndorf 19</option>
+                            </optgroup>
+                            <optgroup label="Waldmünchen">
+                                <option value="7472">Mauerer Reinhard Spenglerei , Ast 33</option>
+                            </optgroup>
+                            <optgroup label="Wallenfels">
+                                <option value="6842">Holzbau Deuerling , Am Silberberg 5</option>
+                            </optgroup>
+                            <optgroup label="Wallgau">
+                                <option value="6956">Betonwerk Sprenger GmbH , Isarstraße 20</option>
+                            </optgroup>
+                            <optgroup label="Walsdorf">
+                                <option value="6974">Holzbau Übel GmbH , Lange Str. 5</option>
+                            </optgroup>
+                            <optgroup label="Warmensteinach">
+                                <option value="7490">Auto Check Neise , Badstr. 186</option>
+                                <option value="7431">Auto-Heser e.K. , Löchleinstalstr. 347</option>
+                                <option value="7027">Elektro Markhof Elektrotechnik - Installation , Hütten 18</option>
+                                <option value="7043">SEL GmbH Edifice Safety , Badstr. 186</option>
+                                <option value="7025">Sigmund Lindner GmbH , Oberwarmensteinacher Str. 38</option>
+                                <option value="7160">SPANCRAFT GmbH , Badstr. 186</option>
+                            </optgroup>
+                            <optgroup label="Weiden">
+                                <option value="6905">KETONIA GmbH Spannbeton-Fertigteilwerk , Almesbach 4</option>
+                                <option value="7520">Richard Rank GmbH &amp; Co. KG , Dr.-von-Fromm-Str. 14</option>
+                            </optgroup>
+                            <optgroup label="Weidenberg">
+                                <option value="7408">Auto Hensel, Fröhlich u. Hübsch , Bahnhofstr. 8+11</option>
+                                <option value="6874">BFT Bayreuth GmbH , Görschnitz 74</option>
+                                <option value="7381">D.W.I Service Süd GmbH , Winter-Ring 12</option>
+                                <option value="7516">Hans Prechtl GmbH &amp; Co. KG , Industriestr. 25</option>
+                                <option value="7604">Helmut Zink Schlosserei-Kunstschmiede , Glotzdorf 42</option>
+                                <option value="7438">Hydewa GmbH Marcus Macicek , Hydewaplatz 1-3</option>
+                                <option value="7136">Ideen Werkstatt Michael Pfaffenberger , In der Au 6</option>
+                                <option value="7232">K &amp; L electronics GmbH , Winter Ring 13</option>
+                                <option value="7461">Lippolt GmbH , Heßlacher Str. 4</option>
+                                <option value="7154">Möbelkonzepte Reger GmbH , Flurstr. 2</option>
+                                <option value="7273">Röchling Precision Components GmbH , Winter-Ring 3</option>
+                                <option value="7036">Röchling Precision Components GmbH , Winter-Ring 3 d</option>
+                                <option value="7123">Schreinerei Dudnik Inh. Martin Dudnik , Stockauer Str. 18</option>
+                                <option value="6971">Zapf GmbH - Weidenberg , Görschnitz 48</option>
+                            </optgroup>
+                            <optgroup label="Weißenohe">
+                                <option value="7638">Bernd Rackelmann Klempnertechnik GmbH , Sportplatzstr. 4</option>
+                            </optgroup>
+                            <optgroup label="Weißenstadt">
+                                <option value="7066">Holger Grießhammer Maler- und Lackierermeister , Schönlind 4
+                                </option>
+                                <option value="7645">PEMA Vollkorn-Spezialitäten Heinrich Leupoldt KG , Goethestr. 23
+                                </option>
+                                <option value="7096">Schlötzer Malermeister GmbH &amp; Co. KG Fachbetrieb für Gestaltung
+                                    , Schillerstr. 7
+                                </option>
+                            </optgroup>
+                            <optgroup label="Wertheim">
+                                <option value="6988">Euronics Diehm , Bismarckstraße 18</option>
+                            </optgroup>
+                            <optgroup label="Wiesau">
+                                <option value="6850">Ziegler-Haus GmbH , Steinackerweg 1</option>
+                            </optgroup>
+                            <optgroup label="Wiesenthau">
+                                <option value="7664">Zimmerei Kroder , Heckengasse 1</option>
+                            </optgroup>
+                            <optgroup label="Wiesentheid">
+                                <option value="7647">Fernseh-Krämer EURONICS , Bahnhofstr. 38</option>
+                            </optgroup>
+                            <optgroup label="Wiesenttal">
+                                <option value="6839">CM-Holzbau GmbH , Engelhardsberg 45</option>
+                                <option value="6927">Neudecker GmbH , Gößmannsberg 29</option>
+                            </optgroup>
+                            <optgroup label="Wiesenttal-Muggendorf">
+                                <option value="7161">Schreinerei Andreas Sponsel , Schulberg 8</option>
+                            </optgroup>
+                            <optgroup label="Wilburgstetten">
+                                <option value="6940">Ruf GmbH Baustoffe Beton Fertigbau , Karl-Ruf-Str. 1 An der B 25
+                                </option>
+                            </optgroup>
+                            <optgroup label="Windischeschenbach">
+                                <option value="7562">Sperber Bauspenglerei &amp; Bedachung , Gerberstr. 8</option>
+                            </optgroup>
+                            <optgroup label="Wirsberg">
+                                <option value="7680">HK Automobile , Tischeräcker 6</option>
+                            </optgroup>
+                            <optgroup label="Wolframs-Eschenbach">
+                                <option value="7627">GDS Sicherheitssysteme GmbH , Hauptstr. 6</option>
+                            </optgroup>
+                            <optgroup label="Wonsees">
+                                <option value="6844">Donath Dachdeckerei u. Zimmerei , Hollfelder Str. 15</option>
+                                <option value="6872">Holzbau Bergmann , Hauptstr. 18</option>
+                                <option value="6870">Schreinerei Andreas Angermann , An der Schwalbach 9</option>
+                                <option value="7341">Simone`s Frisurenschmiede , Marktplatz 6</option>
+                            </optgroup>
+                            <optgroup label="Wörth a. d. Donau">
+                                <option value="7683">Wanninger Spenglerei GmbH Inh.: Siegfried Wanninger , Im Haslet
+                                    16
+                                </option>
+                            </optgroup>
+                            <optgroup label="Wunsiedel">
+                                <option value="7202">DRONCO GmbH , Wiesenmühle 1</option>
+                                <option value="6939">Karl Roth Baumeister GmbH &amp; Co. KG , Hornschuchstr. 22-24
+                                </option>
+                                <option value="7674">Sirtl Inhaber Wolfgang Pscherer , Bibersbacher Str. 17</option>
+                                <option value="7601">Wolf Wunsiedel Metall- u. Fahrzeugbau , Hofer Str. 27</option>
+                            </optgroup>
+                            <optgroup label="Zandt">
+                                <option value="7533">Ernst Rotter Spenglerei , Kötzinger Str. 8</option>
+                                <option value="7499">MF UG &amp; Co.KG Franz Mühlbauer Spenglerei , Weiherhäusl 3
+                                </option>
+                                <option value="7572">Spenglerei Strobl GmbH &amp;. Co. KG , In der Au 7</option>
+                            </optgroup>
+                            <optgroup label="Zedtwitz">
+                                <option value="6929">Peetz Bau GmbH , Inselring 10</option>
+                            </optgroup>
+                            <optgroup label="Zeegendorf-Strullendorf">
+                                <option value="6860">Amon Matthias Zimmerei , Mühlwiesenweg 20</option>
+                            </optgroup>
+                            <optgroup label="Zell">
+                                <option value="7110">Achenbach Fensterbau GmbH , Reinersreuther Str. 10</option>
+                            </optgroup>
+                        </select>
+                        <a class="btn controlButton blankLinkButton btn-sm float-right smallButtonDistance"
+                           href="/betrieb/neu">Neuen Betrieb anlegen</a>
+                    </div>
+                    <div class="col-sm-12">
+                        <label class="labelFont required">Ausbilder*innen-E-Mail (alternativ Betriebs-E-Mail)</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="email" id="ausbildung_ausbilderemail" name="ausbildung[ausbilderemail]"
+                               required="required" placeholder="mein.ausbilder@musterfirma.de" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <label class="labelFont required">Beginn</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="text" id="ausbildung_beginn" name="ausbildung[beginn]" required="required"
+                               class="form-control"/>
+                    </div>
+                    <div class="col">
+                        <label class="labelFont required">Ende</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="text" id="ausbildung_ende" name="ausbildung[ende]" required="required"
+                               class="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label class="labelFont required">Beruf</label>
+                        <div class="form-error">
+
+                        </div>
+                        <select id="ausbildung_beruf" name="ausbildung[beruf]" required="required" class="form-control">
+                            <option value="" selected="selected">Auswählen...</option>
+                            <option value="235">Anlagenmechaniker - Apparatetechnik</option>
+                            <option value="236">Ausbaufacharbeiter - Schwerpunkt Estricharbeiten</option>
+                            <option value="237">Ausbaufacharbeiter - Schwerpunkt Fliesen, Platten- und Mosai</option>
+                            <option value="238">Ausbaufacharbeiter - Schwerpunkt Stuckateurarbeiten</option>
+                            <option value="239">Ausbaufacharbeiter - Schwerpunkt Trockenbauarbeiten</option>
+                            <option value="240">Ausbaufacharbeiter - Schwerpunkt Wärme-, Kälte-, Schallschut</option>
+                            <option value="241">Ausbaufacharbeiter - Schwerpunkt Zimmerarbeiten</option>
+                            <option value="244">Bauten- und Objektbeschichter</option>
+                            <option value="245">Bauwerksmechaniker für Abbruch- und Betontrenntechnik</option>
+                            <option value="246">Behälter- und Apparatebauer / Kupferschmied</option>
+                            <option value="247">Beton- u.Stahlbetonbauer</option>
+                            <option value="248">Betonfertigteilbauer</option>
+                            <option value="354">Brunnenbauer</option>
+                            <option value="252">Büchsenmacher</option>
+                            <option value="253">Elektroanlagenmonteur</option>
+                            <option value="263">Elektroniker f. Maschinen- u. Antriebstechnik(IHK)</option>
+                            <option value="254">Elektroniker FR: Automatisierungs- und Systemtechnik</option>
+                            <option value="255">Elektroniker FR: Energie- und Gebäudetechnik</option>
+                            <option value="257">Elektroniker für Automatisierungstechnik</option>
+                            <option value="258">Elektroniker für Betriebstechnik</option>
+                            <option value="259">Elektroniker für Gebäude- und Infrastruktursysteme</option>
+                            <option value="356">Elektroniker für Gebäudesystemintegration</option>
+                            <option value="260">Elektroniker für Geräte und Systeme</option>
+                            <option value="261">Elektroniker für Informations- und Systemtechnik</option>
+                            <option value="262">Elektroniker für Maschinen- u. Antriebstechnik(HW)</option>
+                            <option value="264">Estrichleger</option>
+                            <option value="265">Fachinformatiker - Anwendungsentwicklung</option>
+                            <option value="351">Fachinformatiker - Daten- und Prozessanalyse</option>
+                            <option value="352">Fachinformatiker - Digitale Vernetzung</option>
+                            <option value="267">Fachinformatiker - Systemintegration</option>
+                            <option value="266">Fachinformatiker FH-Dual</option>
+                            <option value="268">Fachkraft für Metalltechnik - Konstruktionstechnik</option>
+                            <option value="269">Fachkraft für Metalltechnik - Montagetechnik</option>
+                            <option value="270">Fachkraft für Metalltechnik - Umform- und Drahttechnik</option>
+                            <option value="271">Fachkraft für Metalltechnik - Zerspanungstechnik</option>
+                            <option value="274">Fahrradmonteur</option>
+                            <option value="275">Fahrzeuglackierer</option>
+                            <option value="276">Fassadenmonteur</option>
+                            <option value="277">Feinwerkmechaniker - Feinmechanik</option>
+                            <option value="278">Feinwerkmechaniker - Maschinenbau</option>
+                            <option value="279">Feinwerkmechaniker - Werkzeugbau</option>
+                            <option value="280">Feinwerkmechaniker - Zerspanungstechnik</option>
+                            <option value="281">Fertigungsmechaniker</option>
+                            <option value="282">Feuerungs- und Schornsteinbauer</option>
+                            <option value="284">Fliesen-, Platten- und Mosaikleger</option>
+                            <option value="285">Fotograf</option>
+                            <option value="287">Gießereimechaniker - Handformguss</option>
+                            <option value="288">Gießereimechaniker - Maschinenform-, Druck- und Kokillenguss</option>
+                            <option value="289">Hochbaufacharbeiter - Schwerpunkt Beton- und Stahlbetonbauar</option>
+                            <option value="290">Hochbaufacharbeiter - Schwerpunkt Maurerarbeiten</option>
+                            <option value="291">Holzmechaniker</option>
+                            <option value="292">Industrieelektriker FR: Betriebstechnik</option>
+                            <option value="293">Industrieelektriker FR: Geräte und Systeme</option>
+                            <option value="294">Industriemechaniker</option>
+                            <option value="355">Informationselektroniker</option>
+                            <option value="296">IT-System-Elektroniker</option>
+                            <option value="303">Kanalbauer</option>
+                            <option value="295">Kaufmann für Digitalisierungsmanagement</option>
+                            <option value="297">Kaufmann für IT-Systemmanagement</option>
+                            <option value="306">Kfz-Mechatroniker - Karosserietechnik</option>
+                            <option value="310">Kfz-Mechatroniker - System- und Hochvolttechnik</option>
+                            <option value="307">Kfz-Mechatroniker-Motorradtechnik</option>
+                            <option value="308">Kfz-Mechatroniker-Nutzfahrzeugtechnik</option>
+                            <option value="309">Kfz-Mechatroniker-PKW-Technik</option>
+                            <option value="311">Klempner</option>
+                            <option value="313">Konstruktionsmechaniker</option>
+                            <option value="314">Land- und Baumaschinenmechatroniker</option>
+                            <option value="315">Maler und Lackierer - Bauten- u. Korrosionsschutz</option>
+                            <option value="316">Maler und Lackierer - Gestaltung u. Instandhaltung</option>
+                            <option value="317">Maler und Lackierer - Kirchenmalerei-Denkmalpflege</option>
+                            <option value="318">Maschinen- und Anlagenführer - Fertigungsmechaniker</option>
+                            <option value="319">Maschinen- und Anlagenführer - Metalltechnik</option>
+                            <option value="320">Maurer</option>
+                            <option value="305">Mech. f. Karosserie-Fahrzeugbautechnik-Instandhalt</option>
+                            <option value="304">Mech. f. Karosserie-Fahrzeugbautechnik-Karosserie</option>
+                            <option value="321">Mechaniker für Reifen- und Vulkanisationstechn. FR Reifen- u</option>
+                            <option value="322">Mechaniker für Reifen- und Vulkanisationstechn. FR Vulkanisa</option>
+                            <option value="323">Mechatroniker</option>
+                            <option value="324">Metall- und Glockengießer - Zinngusstechnik</option>
+                            <option value="325">Metallbauer - Konstruktionstechnik</option>
+                            <option value="326">Metallbauer - Metallgestaltung</option>
+                            <option value="327">Metallbauer-Nutzfahrzeugbau/Fahrzeugkonstruktionst</option>
+                            <option value="300">mithelfende Familienangehörige</option>
+                            <option value="301">ohne Berufstätigkeit und Arbeitslose</option>
+                            <option value="328">Praktikanten (EQJ-Maßnahme)</option>
+                            <option value="329">Rohrleitungsbauer</option>
+                            <option value="334">Stanz- und Umformmechaniker</option>
+                            <option value="335">Straßenbauer</option>
+                            <option value="336">Stukkateur</option>
+                            <option value="337">Systemelektroniker</option>
+                            <option value="302">Teilnehmer an Lehrgängen der Arbeitsverwaltung</option>
+                            <option value="338">Tiefbaufacharbeiter - Schwerpunkt Gleisbauarbeiten</option>
+                            <option value="339">Tiefbaufacharbeiter - Schwerpunkt Kanalbauarbeiten</option>
+                            <option value="340">Tiefbaufacharbeiter - Schwerpunkt Rohrleitungsbauarbeiten</option>
+                            <option value="341">Tiefbaufacharbeiter - Schwerpunkt Straßenbauarbeiten</option>
+                            <option value="342">Tischler</option>
+                            <option value="343">Trockenbaumonteur</option>
+                            <option value="350">Unbegleitete Flüchtlinge</option>
+                            <option value="344">Verfahrensmechaniker in der Hütten- u. Halbzeugindustrie</option>
+                            <option value="249">Werksteinhersteller</option>
+                            <option value="345">Werkzeugmechaniker</option>
+                            <option value="346">Zerspanungsmechaniker</option>
+                            <option value="347">Zimmerer</option>
+                            <option value="348">Zweiradmechatroniker - Fahrradtechnik</option>
+                            <option value="349">Zweiradmechatroniker - Motorradtechnik</option>
+                        </select>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+                <button type="submit" class="btn controlButton buttonFont btn-block blankLinkButton">Weiter...</button>
+
+                <input type="hidden" id="ausbildung__token" name="ausbildung[_token]"
+                       value="oUR8NjiP07yQI6LB9256yiMidlbvOAa_qwEkQdjnb9c"/></form>
+
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+    <br>
+    <br>
+</div>
+
+<div class="" id="footer">
+    <div class="container containerFooter">
+        <div class="row SpacingSides">
+            <div class="col-sm-6 text-left headlineFont">
+                <br>
+                Staatliche Berufsschule I<br>
+                Kerschensteinerstraße 6<br>
+                95448 Bayreuth<br>
+                <br>
+
+            </div>
+            <div class="col-sm-6 text-right headlineFont">
+                <br>
+                Tel.: 09 21 / 50 73 93 6 - 0<br>
+                Fax: 09 21 / 50 73 93 6 - 99<br>
+                <a class="blankLink" href="https://www.bs1-bt.de/allgemeines/kontakt" target="_blank">Kontaktfomular</a>
+            </div>
+        </div>
+        <div class="row copyright">
+            <div class="col-lg-12 text-center">
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a class="blankLink greyFooter" href="https://www.bs1-bt.de/impressum"
+                           target="_blank">Impressum</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="blankLink greyFooter" href="https://www.bs1-bt.de/datenschutz" target="_blank">Datenschutz</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" id="copyright">
+                        <hr class="copyrightLine">
+                        <a href="https://github.com/SimonHaas/schulanmeldung" target="_blank">&copy; Schüler IFH12:
+                            Simon Haas, Christian Löwel, Max Großmann, Michelle Krebs, Tim Rochholz, Lisa Heinrich, Jan
+                            Kemnitzer - Lehrkraft Johannes Hösl</a>
+                        <hr class="copyrightLine">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"
+        integrity="sha256-tW5LzEC7QjhG0CiAvxlseMTs2qJS7u3DRPauDjFJ3zo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/locales/bootstrap-datepicker.de.min.js"
+        integrity="sha256-MRg0FdDDqvQkQ3VIUMZCZ39M6O40kpoIYqCGU2rRyxE=" crossorigin="anonymous"></script>
+<script>
+    $(document).ready(function () {
+        var d = new Date();
+        var dateStr = "01.09." + d.getFullYear();
+        $('#ausbildung_beginn').datepicker({
+            format: 'dd.mm.yyyy',
+            autoclose: true,
+            assumeNearbyYear: true,
+            calendarWeeks: true,
+            language: 'de',
+            todayHighlight: true,
+            weekStart: 1,
+            startDate: '-5y',
+            endDate: '+5y',
+            defaultViewDate: dateStr
+        });
+        $('#ausbildung_ende').datepicker({
+            format: 'dd.mm.yyyy',
+            autoclose: true,
+            assumeNearbyYear: true,
+            calendarWeeks: true,
+            language: 'de',
+            todayHighlight: true,
+            weekStart: 1,
+            startDate: '-5y',
+            endDate: '+5y',
+            defaultViewDate: dateStr,
+            startView: 2
+        });
+    });
+</script>
+</body>
+</html>
