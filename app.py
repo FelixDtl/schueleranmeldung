@@ -9,10 +9,12 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "redis" # null, filesystem, redis, cookie ...
 Session(app)
 
+r = redis.Redis(host='localhost', port=6379, db=0)
 
 @app.route('/', methods=['GET', 'POST'])
 def index():  # put application's code here
     if request.method == 'POST':
+        print("bin an dieser Stelle")
         eingabe = request.form.get('start[typ]')
         # Speichern Sie die Eingabedaten in der Sitzung
         session['eingabe'] = eingabe
