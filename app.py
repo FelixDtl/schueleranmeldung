@@ -1,7 +1,8 @@
-
 from flask import Flask, render_template, session, redirect, request
 from flask_session import Session
 import redis
+
+from routing.routes import routes_index
 
 app = Flask(__name__)
 
@@ -18,8 +19,19 @@ def index():  # put application's code here
         eingabe = request.form.get('start[typ]')
         # Speichern Sie die Eingabedaten in der Sitzung
         session['eingabe'] = eingabe
-        return redirect('/ausbildung')
+        redirect_target=routes_index(eingabe)
+        return redirect(redirect_target)
     return render_template('index.html')
+
+r = redis.Redis(host='localhost', port=6379, db=0)
+
+@app.route('/set', methods=['POST'])
+def set_data():
+    data = request.json  # JSON-Daten von der Anfrage erhalten
+    for key, value in data.items():
+        r.set(key, value)  # Daten in Redis speichern
+    return "Daten wurden in Redis gespeichert."
+
 
 
 
@@ -29,6 +41,14 @@ def ausbildung():  # put application's code here
         # Abrufen der in der Sitzung gespeicherten Daten
         eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
         return render_template('ausbildung.html', eingabe=eingabe)
+
+@app.route('/Berufsintegrationsklasse')
+def berufintegrationsklasse():
+    print(session['eingabe'])
+    eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
+    return render_template('Berufsintegrationsklasse.html', eingabe=eingabe)
+
+
 
 if __name__ == '__main__':
     app.run()
