@@ -15,7 +15,6 @@ r = redis.Redis(host='localhost', port=6379, db=0)
 @app.route('/', methods=['GET', 'POST'])
 def index():  # put application's code here
     if request.method == 'POST':
-        print("bin an dieser Stelle")
         eingabe = request.form.get('start[typ]')
         # Speichern Sie die Eingabedaten in der Sitzung
         session['eingabe'] = eingabe
@@ -67,6 +66,9 @@ def berufsintegrationsklasse():
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('Berufsintegrationsklasse.html', eingabe=eingabe)
 
+@app.route('/404')
+def error():
+    return render_template('404.html')
 
 if __name__ == '__main__':
     app.run()
