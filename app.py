@@ -7,10 +7,11 @@ from routing.routes import routes_index
 app = Flask(__name__)
 
 app.config["SESSION_PERMANENT"] = False
-app.config["SESSION_TYPE"] = "redis" # null, filesystem, redis, cookie ...
+app.config["SESSION_TYPE"] = "redis"  # null, filesystem, redis, cookie ...
 Session(app)
 
 r = redis.Redis(host='localhost', port=6379, db=0)
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():  # put application's code here
@@ -19,11 +20,13 @@ def index():  # put application's code here
         eingabe = request.form.get('start[typ]')
         # Speichern Sie die Eingabedaten in der Sitzung
         session['eingabe'] = eingabe
-        redirect_target=routes_index(eingabe)
+        redirect_target = routes_index(eingabe)
         return redirect(redirect_target)
     return render_template('index.html')
 
+
 r = redis.Redis(host='localhost', port=6379, db=0)
+
 
 @app.route('/set', methods=['POST'])
 def set_data():
@@ -33,21 +36,19 @@ def set_data():
     return "Daten wurden in Redis gespeichert."
 
 
-
-
 @app.route('/ausbildung')
 def ausbildung():  # put application's code here
-        print(session['eingabe'])
-        # Abrufen der in der Sitzung gespeicherten Daten
-        eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
-        return render_template('ausbildung.html', eingabe=eingabe)
+    print(session['eingabe'])
+    # Abrufen der in der Sitzung gespeicherten Daten
+    eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
+    return render_template('ausbildung.html', eingabe=eingabe)
+
 
 @app.route('/Berufsintegrationsklasse')
 def berufintegrationsklasse():
     print(session['eingabe'])
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('Berufsintegrationsklasse.html', eingabe=eingabe)
-
 
 
 if __name__ == '__main__':
