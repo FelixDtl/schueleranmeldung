@@ -50,5 +50,23 @@ def berufintegrationsklasse():
 
 
 
+@app.route('/umschueler')
+def umschueler():
+    eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
+    return render_template('umschueler.html', eingabe=eingabe)
+
+
+@app.route('/holztechnik')
+def holztechnik():
+    eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
+    return render_template('holztechnik.html', eingabe=eingabe)
+
+
+@app.route('/Berufsintegrationsklasse')
+def berufsintegrationsklasse():
+    eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
+    return render_template('Berufsintegrationsklasse.html', eingabe=eingabe)
+
+
 if __name__ == '__main__':
     app.run()
