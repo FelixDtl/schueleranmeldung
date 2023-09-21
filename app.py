@@ -18,7 +18,7 @@ def index():  # put application's code here
     if request.method == 'POST':
         eingabe = request.form.get('start[typ]')
         # Speichern Sie die Eingabedaten in der Sitzung
-        session['eingabe'] = eingabe
+        session['start[typ]'] = eingabe
         redirect_target = routes_index(eingabe)
         return redirect(redirect_target)
     return render_template('index.html')
@@ -50,8 +50,6 @@ def ausbildung():
         ausbildung_beruf = request.form.get('ausbildung[beruf]')
         session['ausbildung_beruf'] = ausbildung_beruf
 
-
-
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('ausbildung.html', eingabe=eingabe)
 
@@ -59,23 +57,22 @@ def ausbildung():
 @app.route('/Berufsintegrationsklasse', methods=['POST', 'GET'])
 def berufsintegrationsklasse():
     if request.method == 'POST':
-        keineDeutschkenntnisse = request.form.get('fluechtling[deutschKenntnis]')
-        session['fluechtling_deutschKenntnis_0'] = keineDeutschkenntnisse
-
-        sehrSchlechteDeutschkenntnisse = request.form.get('fluechtling[deutschKenntnis]')
-        session['fluechtling_deutschKenntnis_1'] = sehrSchlechteDeutschkenntnisse
-
-        schlechteDeutschkenntnisse = request.form.get('fluechtling[deutschKenntnis]')
-        session['fluechtling_deutschKenntnis_2'] = schlechteDeutschkenntnisse
-
-        durchschnittlicheDeutschkenntnisse = request.form.get('fluechtling[deutschKenntnis]')
-        session['fluechtling_deutschKenntnis_3'] = durchschnittlicheDeutschkenntnisse
-
-        guteDeutschkenntnisse = request.form.get('fluechtling[deutschKenntnis]')
-        session['fluechtling_deutschKenntnis_4'] = guteDeutschkenntnisse
-
-        sehrGuteDeutschkenntnisse = request.form.get('fluechtling[deutschKenntnis]')
-        session['fluechtling_deutschKenntnis_5'] = sehrGuteDeutschkenntnisse
+        deutschKenntnis = request.form.get('fluechtling[deutschKenntnis]')
+        if deutschKenntnis == 'Keine Deutschkenntnisse':
+            session['fluechtling_deutschKenntnis'] = 0
+        elif deutschKenntnis == 'Sehr schlechte Deutschkenntnisse':
+            session['fluechtling_deutschKenntnis'] = 1
+        elif deutschKenntnis == 'Schlechte Deutschkenntnisse':
+            session['fluechtling_deutschKenntnis'] = 2
+        elif deutschKenntnis == 'Durchschnittliche Deutschkenntnisse':
+            session['fluechtling_deutschKenntnis'] = 3
+        elif deutschKenntnis == 'Gute Deutschkenntnisse':
+            session['fluechtling_deutschKenntnis'] = 4
+        elif deutschKenntnis == 'Sehr gute Deutschkenntnisse':
+            session['fluechtling_deutschKenntnis'] = 5
+        else:
+            # Fallback für den Fall, dass keine der oben genannten Optionen ausgewählt wurde
+            session['fluechtling_deutschKenntnis'] = -1
 
         fluechtlingAnmeldeStelle = request.form.get('fluechtling[anmeldeStelle]')
         session['fluechtling_anmeldeStelle'] = fluechtlingAnmeldeStelle
@@ -85,7 +82,6 @@ def berufsintegrationsklasse():
 
         fluechtlingTel = request.form.get('fluechtling[tel]')
         session['fluechtling_tel'] = fluechtlingTel
-
 
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('Berufsintegrationsklasse.html', eingabe=eingabe)
@@ -100,11 +96,6 @@ def umschueler():
         session['umschueler_traegersitz'] = umschueler_traegersitz
         umschueler_foedernummer = request.form.get('umschueler[foedernummer]')
         session['umschueler_foedernummer'] = umschueler_foedernummer
-
-        eingabe = request.form.get('start[typ]')
-        session['eingabe'] = eingabe
-        redirect_target = routes_index(index)
-
 
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('umschueler.html', eingabe=eingabe)
