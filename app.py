@@ -55,8 +55,47 @@ def umschueler():
     return render_template('umschueler.html', eingabe=eingabe)
 
 
-@app.route('/holztechnik')
+@app.route('/holztechnik', methods=['GET', 'POST'])
 def holztechnik():
+    if request.method =='POST':
+        schueler_vorname = request.form.get('schueler[vorname]')
+        session['schueler_vorname'] = schueler_vorname
+        schueler_nachname = request.form.get('schueler[nachname]')
+        session['schueler_nachname'] = schueler_nachname
+        schueler_rufname = request.form.get('schueler[rufname]')
+        session['schueler_rufname'] = schueler_rufname
+        schueler_geschlecht = request.form.get('schueler[geschlecht]')
+        session['schueler_geschlecht'] = schueler_geschlecht
+        schueler_strasse = request.form.get('schueler[strasse]')
+        session['schueler_strasse'] = schueler_strasse
+        schueler_hsnr = request.form.get('schueler[hsnr]')
+        session['schueler_hsnr'] = schueler_hsnr
+        schueler_plz = request.form.get('schueler[plz]')
+        session['schueler_plz'] = schueler_plz
+        schueler_ort = request.form.get('schueler[ort]')
+        session['schueler_ort'] = schueler_ort
+        schueler_tel = request.form.get('schueler[tel]')
+        session['schueler_tel'] = schueler_tel
+        schueler_email = request.form.get('schueler[email]')
+        session['schueler_email'] = schueler_email
+        schueler_geburtsdatum = request.form.get('schueler[geburtsdatum]')
+        session['schueler_geburtsdatum'] = schueler_geburtsdatum
+        schueler_geburtsort = request.form.get('schueler[geburtsort]')
+        session['schueler_geburtsort'] = schueler_geburtsort
+        schueler_geburtsland = request.form.get('schueler[geburtsland]')
+        session['schueler_geburtsland'] = schueler_geburtsland
+        schueler_staatsangehoerigkeit = request.form.get('schueler[staatsangehoerigkeit]')
+        session['schueler_staatsangehoerigkeit'] = schueler_staatsangehoerigkeit
+        schueler_bekenntnis = request.form.get('schueler[bekenntnis]')
+        session['schueler_bekenntnis'] = schueler_bekenntnis
+
+        eingabe = request.form.get('start[typ]')
+        session['eingabe'] = eingabe
+        redirect_target = routes_index(index)
+
+        print(schueler_tel)
+        return redirect(redirect_target)
+
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('holztechnik.html', eingabe=eingabe)
 
