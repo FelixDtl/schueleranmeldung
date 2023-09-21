@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Neuen Betrieb anlegen - BS1 Schulanmeldung</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/customStyle.css') }}" type="text/css">
+
+</head>
+
+
+<body class="">
+
+<header>
+    <div class="container containerColor">
+        <div class="row SpacingTop SpacingSides">
+            <div class="col hideLogo">
+                <img class="img-fluid" src="{{ url_for('static', filename='pictures/Logo_Berufsschule_4c.jpg') }}"
+                     width="200px" alt="Logo">
+            </div>
+            <div class="col">
+            </div>
+            <div class="col ">
+                <div class="hidePictures optimizedPicture">
+                    <img class="img-fluid"
+                         src="{{ url_for('static', filename='pictures/SchulansichtInDenLogofarbenSlideFarbe.png') }}"
+                         width="200px" alt="Logo">
+                </div>
+
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col text-center">
+                <h1 class="headlineFont headlineGlobal">Schulanmeldung</h1>
+                <hr>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div id="content" class="container  containerColor jumbotron">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <div class="col-lg-10">
+            <h1 class="headlineFont distanceToHeader">Anlage eines Betriebs</h1>
+            <form name="betrieb" method="post">
+
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="labelFont required">Name des Betriebs</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="text" id="betrieb_name" name="betrieb[name]" required="required" maxlength="255"
+                               placeholder="Beispielfirma GmbH" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="labelFont required">Straße</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="text" id="betrieb_strasse" name="betrieb[strasse]" required="required"
+                               maxlength="255" placeholder="Musterstraße" class="form-control"/>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="labelFont required">Hausnummer</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="text" id="betrieb_hsnr" name="betrieb[hsnr]" required="required" maxlength="10"
+                               placeholder="15" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="labelFont required">Postleitzahl</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="text" id="betrieb_plz" name="betrieb[plz]" required="required" maxlength="5"
+                               placeholder="91234" class="form-control"/>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="labelFont required">Ort</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="text" id="betrieb_ort" name="betrieb[ort]" required="required" maxlength="255"
+                               placeholder="Musterstadt" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="labelFont required">Telefonnummer der Zentrale</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="tel" id="betrieb_telZentrale" name="betrieb[telZentrale]" required="required"
+                               placeholder="0124/56789" class="form-control"/>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="labelFont required">Kammer</label>
+                        <div class="form-error">
+
+                        </div>
+                        <select id="betrieb_kammer" name="betrieb[kammer]" required="required" class="form-control">
+                            <option value="" selected="selected">Auswählen...</option>
+                            <option value="102">HWK Bayreuth</option>
+                            <option value="153">IHK Bayreuth</option>
+                            <option value="154">IHK Coburg</option>
+                            <option value="151">IHK Aschaffenburg</option>
+                            <option value="101">HWK Augsburg</option>
+                            <option value="152">IHK Augsburg</option>
+                            <option value="155">IHK Lindau</option>
+                            <option value="156">IHK München</option>
+                            <option value="105">HWK Nürnberg</option>
+                            <option value="157">IHK Nürnberg</option>
+                            <option value="106">HWK Passau</option>
+                            <option value="158">IHK Passau</option>
+                            <option value="107">HWK Regensburg</option>
+                            <option value="159">IHK Regensburg</option>
+                            <option value="108">HWK Würzburg</option>
+                            <option value="160">IHK Würzburg-Schweinfurt</option>
+                            <option value="0">sonstige</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="labelFont">Ansprechpartner</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="text" id="betrieb_ansprPartner" name="betrieb[ansprPartner]" maxlength="255"
+                               placeholder="Max Mustermann" class="form-control"/>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="labelFont">Durchwahl</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="tel" id="betrieb_telDurchwahl" name="betrieb[telDurchwahl]"
+                               placeholder="0124/56789" class="form-control"/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <label class="labelFont">Fax</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="tel" id="betrieb_fax" name="betrieb[fax]" placeholder="0124/56789"
+                               class="form-control"/>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="labelFont required">E-Mail</label>
+                        <div class="form-error">
+
+                        </div>
+                        <input type="email" id="betrieb_email" name="betrieb[email]" required="required"
+                               placeholder="m.mustermann@beispielfirma.de" class="form-control"/>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <button class="btn controlButton buttonFont btn-block">Speichern</button>
+                <input type="hidden" id="betrieb__token" name="betrieb[_token]"
+                       value="v6mwFaofANOZ3x8re_DJbN64fR7YxjDuHF6lbpJNQFw"/></form>
+
+
+        </div>
+        <div class="col-lg-1"></div>
+    </div>
+    <br>
+    <br>
+</div>
+
+<div class="" id="footer">
+    <div class="container containerFooter">
+        <div class="row SpacingSides">
+            <div class="col-sm-6 text-left headlineFont">
+                <br>
+                Staatliche Berufsschule I<br>
+                Kerschensteinerstraße 6<br>
+                95448 Bayreuth<br>
+                <br>
+
+            </div>
+            <div class="col-sm-6 text-right headlineFont">
+                <br>
+                Tel.: 09 21 / 50 73 93 6 - 0<br>
+                Fax: 09 21 / 50 73 93 6 - 99<br>
+                <a class="blankLink" href="https://www.bs1-bt.de/allgemeines/kontakt" target="_blank">Kontaktfomular</a>
+            </div>
+        </div>
+        <div class="row copyright">
+            <div class="col-lg-12 text-center">
+                <br>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a class="blankLink greyFooter" href="https://www.bs1-bt.de/impressum"
+                           target="_blank">Impressum</a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a class="blankLink greyFooter" href="https://www.bs1-bt.de/datenschutz" target="_blank">Datenschutz</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" id="copyright">
+                        <hr class="copyrightLine">
+                        <a href="https://github.com/SimonHaas/schulanmeldung" target="_blank">&copy; Schüler IFH12:
+                            Simon Haas, Christian Löwel, Max Großmann, Michelle Krebs, Tim Rochholz, Lisa Heinrich, Jan
+                            Kemnitzer - Lehrkraft Johannes Hösl</a>
+                        <hr class="copyrightLine">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+</html>

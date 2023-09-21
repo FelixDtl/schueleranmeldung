@@ -2,6 +2,7 @@ from flask import Flask, render_template, session, redirect, request
 from flask_session import Session
 import redis
 
+from utils import addcompany
 from routing.routes import routes_index
 
 app = Flask(__name__)
@@ -52,6 +53,50 @@ def ausbildung():
 
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('ausbildung.html', eingabe=eingabe)
+
+@app.route('/betrieb/neu', methods=['GET', 'POST'])
+def betriebNeu():
+    if request.method == 'POST':
+        betriebName = request.form.get('betrieb[name]')
+        session['betrieb_name'] = betriebName
+
+        betriebStrasse = request.form.get('betrieb[strasse]')
+        session['betrieb_strasse'] = betriebStrasse
+
+        betriebHsnr = request.form.get('betrieb[hsnr]')
+        session['betrieb_hsnr'] = betriebHsnr
+
+        betriebPlz = request.form.get('betrieb[plz]')
+        session['betrieb_plz'] = betriebPlz
+
+        betriebOrt = request.form.get('betrieb[ort]')
+        session['betrieb_ort'] = betriebOrt
+
+        betriebTelZentrale = request.form.get('betrieb[telZentrale]')
+        session['betrieb_telZentrale'] = betriebTelZentrale
+
+        betriebKammer = request.form.get('betrieb[kammer]')
+        session['betrieb_kammer'] = betriebKammer
+
+        betriebAnsprPartner = request.form.get('betrieb[ansprPartner]')
+        session['betrieb_ansprPartner'] = betriebAnsprPartner
+
+        betriebTelDurchwahl = request.form.get('betrieb[telDurchwahl]')
+        session['betrieb_telDurchwahl'] = betriebTelDurchwahl
+
+        betriebFax = request.form.get('betrieb[fax]')
+        session['betrieb_fax'] = betriebFax
+
+        betriebEmail = request.form.get('betrieb[email]')
+        session['betrieb_email'] = betriebEmail
+
+        print(betriebEmail, betriebFax, betriebOrt, betriebKammer)
+        addcompany.add_company_to_template(betriebOrt, betriebName, betriebStrasse, betriebHsnr)
+        return render_template('ausbildung.html')
+
+    return render_template('betrieb_neu.html')
+
+
 
 
 @app.route('/Berufsintegrationsklasse', methods=['POST', 'GET'])

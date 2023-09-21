@@ -29,7 +29,9 @@
                         </div>
                         <div class="col hideLogo m-4">
                                 <div class="hidePictures optimizedPicture">
-                                <img class="img-fluid" src="{{ url_for('static', filename='pictures/SchulansichtInDenLogofarbenSlideFarbe.png') }}" width="200px" alt="Logo">
+                                    <img class="img-fluid"
+                                         src="{{ url_for('static', filename='pictures/SchulansichtInDenLogofarbenSlideFarbe.png') }}"
+                                         width="200px" alt="Logo">
 
                                 </div>
                         </div>
@@ -55,7 +57,7 @@
         <div class="form-error">
 
         </div>
-        <select id="start_typ" name="start[typ]" required="required" class="fas fa-caret down w-100" content="" >
+        <select id="start_typ" name="start[typ]" required="required" class="fas fa-caret down w-100 form-select" content="" >
             <option value="" selected="selected">Auswählen...</option>
             <option value="AUAU">Ausbildung mit Ausbildungsvertrag</option>
             <option value="EQ">EQ-Maßnahme</option>
