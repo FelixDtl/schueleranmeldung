@@ -144,13 +144,6 @@ def holztechnik():
         schueler_bekenntnis = request.form.get('schueler[bekenntnis]')
         session['schueler_bekenntnis'] = schueler_bekenntnis
 
-        eingabe = request.form.get('start[typ]')
-        session['eingabe'] = eingabe
-        redirect_target = routes_index(index)
-
-        print(schueler_tel)
-        return redirect(redirect_target)
-
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('holztechnik.html', eingabe=eingabe)
 
