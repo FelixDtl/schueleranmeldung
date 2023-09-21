@@ -104,15 +104,28 @@ def berufsintegrationsklasse():
     return render_template('Berufsintegrationsklasse.html', eingabe=eingabe)
 
 
-@app.route('/umschueler')
+@app.route('/umschueler', methods=['GET', 'POST'])
 def umschueler():
+    if request.method == 'POST':
+        umschueler_traeger = request.form.get('umschueler[traeger]')
+        session['umschueler_traeger'] = umschueler_traeger
+        umschueler_traegersitz = request.form.get('umschueler[traegersitz]')
+        session['umschueler_traegersitz'] = umschueler_traegersitz
+        umschueler_foedernummer = request.form.get('umschueler[foedernummer]')
+        session['umschueler_foedernummer'] = umschueler_foedernummer
+
+        eingabe = request.form.get('start[typ]')
+        session['eingabe'] = eingabe
+        redirect_target = routes_index(index)
+
+
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('umschueler.html', eingabe=eingabe)
 
 
 @app.route('/holztechnik', methods=['GET', 'POST'])
 def holztechnik():
-    if request.method =='POST':
+    if request.method == 'POST':
         schueler_vorname = request.form.get('schueler[vorname]')
         session['schueler_vorname'] = schueler_vorname
         schueler_nachname = request.form.get('schueler[nachname]')
