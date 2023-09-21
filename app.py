@@ -50,12 +50,7 @@ def ausbildung():
         ausbildung_beruf = request.form.get('ausbildung[beruf]')
         session['ausbildung_beruf'] = ausbildung_beruf
 
-        eingabe = request.form.get('start[typ]')
-        session['eingabe'] = eingabe
-        redirect_target = routes_index(eingabe)
 
-        print(ausbildung_ende, ausbildung_beruf, ausbildung_beginn, ausbildung_ausbilderemail, ausbildung_betrieb)
-        return redirect(redirect_target)
 
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('ausbildung.html', eingabe=eingabe)
@@ -91,14 +86,6 @@ def berufsintegrationsklasse():
         fluechtlingTel = request.form.get('fluechtling[tel]')
         session['fluechtling_tel'] = fluechtlingTel
 
-        eingabe = request.form.get('start[typ]')
-        session['eingabe'] = eingabe
-        redirect_target = routes_index(eingabe)
-
-        print(fluechtlingAnsprechpartner, fluechtlingTel, keineDeutschkenntnisse, sehrSchlechteDeutschkenntnisse,
-              schlechteDeutschkenntnisse, durchschnittlicheDeutschkenntnisse, guteDeutschkenntnisse,
-              sehrGuteDeutschkenntnisse)
-        return redirect(redirect_target)
 
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('Berufsintegrationsklasse.html', eingabe=eingabe)
