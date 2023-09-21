@@ -24,9 +24,6 @@ def index():  # put application's code here
     return render_template('index.html')
 
 
-r = redis.Redis(host='localhost', port=6379, db=0)
-
-
 @app.route('/set', methods=['POST'])
 def set_data():
     data = request.json  # JSON-Daten von der Anfrage erhalten
@@ -64,8 +61,45 @@ def ausbildung():
     return render_template('ausbildung.html', eingabe=eingabe)
 
 
-@app.route('/Berufsintegrationsklasse')
-def berufintegrationsklasse():
+@app.route('/Berufsintegrationsklasse', methods=['POST', 'GET'])
+def berufsintegrationsklasse():
+    if request.method == 'POST':
+        keineDeutschkenntnisse = request.form.get('fluechtling[deutschKenntnis]')
+        session['fluechtling_deutschKenntnis_0'] = keineDeutschkenntnisse
+
+        sehrSchlechteDeutschkenntnisse = request.form.get('fluechtling[deutschKenntnis]')
+        session['fluechtling_deutschKenntnis_1'] = sehrSchlechteDeutschkenntnisse
+
+        schlechteDeutschkenntnisse = request.form.get('fluechtling[deutschKenntnis]')
+        session['fluechtling_deutschKenntnis_2'] = schlechteDeutschkenntnisse
+
+        durchschnittlicheDeutschkenntnisse = request.form.get('fluechtling[deutschKenntnis]')
+        session['fluechtling_deutschKenntnis_3'] = durchschnittlicheDeutschkenntnisse
+
+        guteDeutschkenntnisse = request.form.get('fluechtling[deutschKenntnis]')
+        session['fluechtling_deutschKenntnis_4'] = guteDeutschkenntnisse
+
+        sehrGuteDeutschkenntnisse = request.form.get('fluechtling[deutschKenntnis]')
+        session['fluechtling_deutschKenntnis_5'] = sehrGuteDeutschkenntnisse
+
+        fluechtlingAnmeldeStelle = request.form.get('fluechtling[anmeldeStelle]')
+        session['fluechtling_anmeldeStelle'] = fluechtlingAnmeldeStelle
+
+        fluechtlingAnsprechpartner = request.form.get('fluechtling[ansprechPartner]')
+        session['fluechtling_ansprechPartner'] = fluechtlingAnsprechpartner
+
+        fluechtlingTel = request.form.get('fluechtling[tel]')
+        session['fluechtling_tel'] = fluechtlingTel
+
+        eingabe = request.form.get('start[typ]')
+        session['eingabe'] = eingabe
+        redirect_target = routes_index(eingabe)
+
+        print(fluechtlingAnsprechpartner, fluechtlingTel, keineDeutschkenntnisse, sehrSchlechteDeutschkenntnisse,
+              schlechteDeutschkenntnisse, durchschnittlicheDeutschkenntnisse, guteDeutschkenntnisse,
+              sehrGuteDeutschkenntnisse)
+        return redirect(redirect_target)
+
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('Berufsintegrationsklasse.html', eingabe=eingabe)
 
@@ -119,12 +153,6 @@ def holztechnik():
 
     eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
     return render_template('holztechnik.html', eingabe=eingabe)
-
-
-@app.route('/Berufsintegrationsklasse')
-def berufsintegrationsklasse():
-    eingabe = session.get('eingabe', 'Keine Eingabe vorhanden')
-    return render_template('Berufsintegrationsklasse.html', eingabe=eingabe)
 
 
 @app.route('/404')
